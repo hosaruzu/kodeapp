@@ -97,8 +97,8 @@
 		0C35D5782B9F298100F46EA4 /* kodeapp */ = {
 			isa = PBXGroup;
 			children = (
-				0C35D5AD2B9F31DE00F46EA4 /* Resources */,
 				0C35D5AC2B9F31D200F46EA4 /* App */,
+				0C35D5AD2B9F31DE00F46EA4 /* Resources */,
 			);
 			path = kodeapp;
 			sourceTree = "<group>";
