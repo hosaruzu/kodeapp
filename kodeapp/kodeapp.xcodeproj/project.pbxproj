@@ -101,14 +101,10 @@
 		0C35D5782B9F298100F46EA4 /* kodeapp */ = {
 			isa = PBXGroup;
 			children = (
-				0C35D5792B9F298100F46EA4 /* AppDelegate.swift */,
-				0C35D57B2B9F298100F46EA4 /* SceneDelegate.swift */,
+				0C35D5AD2B9F31DE00F46EA4 /* Resources */,
+				0C35D5AC2B9F31D200F46EA4 /* App */,
 				0C35D57D2B9F298100F46EA4 /* ViewController.swift */,
 				0C35D57F2B9F298100F46EA4 /* Main.storyboard */,
-				0C35D5852B9F298200F46EA4 /* Assets.xcassets */,
-				0C35D5872B9F298200F46EA4 /* LaunchScreen.storyboard */,
-				0C35D58A2B9F298200F46EA4 /* Info.plist */,
-				0C35D5822B9F298100F46EA4 /* kodeapp.xcdatamodeld */,
 			);
 			path = kodeapp;
 			sourceTree = "<group>";
@@ -128,6 +124,26 @@
 				0C35D59F2B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift */,
 			);
 			path = kodeappUITests;
+			sourceTree = "<group>";
+		};
+		0C35D5AC2B9F31D200F46EA4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5792B9F298100F46EA4 /* AppDelegate.swift */,
+				0C35D57B2B9F298100F46EA4 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0C35D5AD2B9F31DE00F46EA4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5852B9F298200F46EA4 /* Assets.xcassets */,
+				0C35D5872B9F298200F46EA4 /* LaunchScreen.storyboard */,
+				0C35D58A2B9F298200F46EA4 /* Info.plist */,
+				0C35D5822B9F298100F46EA4 /* kodeapp.xcdatamodeld */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,7 +464,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4YYVSHC6RN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = kodeapp/Info.plist;
+				INFOPLIST_FILE = kodeapp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -476,7 +492,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4YYVSHC6RN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = kodeapp/Info.plist;
+				INFOPLIST_FILE = kodeapp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
