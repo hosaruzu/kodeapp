@@ -15,8 +15,6 @@
 		0C35D5942B9F298300F46EA4 /* kodeappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5932B9F298300F46EA4 /* kodeappTests.swift */; };
 		0C35D59E2B9F298300F46EA4 /* kodeappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D59D2B9F298300F46EA4 /* kodeappUITests.swift */; };
 		0C35D5A02B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D59F2B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift */; };
-		0C35D5B42B9F3A0D00F46EA4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0C35D5B32B9F3A0D00F46EA4 /* SnapKit */; };
-		0C35D5B62B9F3A1400F46EA4 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0C35D5B52B9F3A1400F46EA4 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C35D5B62B9F3A1400F46EA4 /* Kingfisher in Frameworks */,
-				0C35D5B42B9F3A0D00F46EA4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				0C35D5AC2B9F31D200F46EA4 /* App */,
+				0C35D5B72BA1E19A00F46EA4 /* Core */,
+				0C35D5B82BA1E1A600F46EA4 /* Modules */,
 				0C35D5AD2B9F31DE00F46EA4 /* Resources */,
 			);
 			path = kodeapp;
@@ -152,6 +150,84 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		0C35D5B72BA1E19A00F46EA4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5BF2BA1E23300F46EA4 /* Services */,
+				0C35D5BE2BA1E1DF00F46EA4 /* CoreData */,
+				0C35D5BD2BA1E1D900F46EA4 /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0C35D5B82BA1E1A600F46EA4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5BB2BA1E1C100F46EA4 /* Favorites */,
+				0C35D5BA2BA1E1B800F46EA4 /* Profile */,
+				0C35D5B92BA1E1B000F46EA4 /* People */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0C35D5B92BA1E1B000F46EA4 /* People */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		0C35D5BA2BA1E1B800F46EA4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0C35D5BB2BA1E1C100F46EA4 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		0C35D5BC2BA1E1D400F46EA4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0C35D5BD2BA1E1D900F46EA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0C35D5BE2BA1E1DF00F46EA4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		0C35D5BF2BA1E23300F46EA4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5C02BA1E23A00F46EA4 /* Cache */,
+				0C35D5BC2BA1E1D400F46EA4 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0C35D5C02BA1E23A00F46EA4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,8 +246,6 @@
 			);
 			name = kodeapp;
 			packageProductDependencies = (
-				0C35D5B32B9F3A0D00F46EA4 /* SnapKit */,
-				0C35D5B52B9F3A1400F46EA4 /* Kingfisher */,
 			);
 			productName = kodeapp;
 			productReference = 0C35D5762B9F298100F46EA4 /* kodeapp.app */;
@@ -246,8 +320,6 @@
 			);
 			mainGroup = 0C35D56D2B9F298100F46EA4;
 			packageReferences = (
-				0C35D5B02B9F392600F46EA4 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				0C35D5B12B9F39EC00F46EA4 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0C35D5772B9F298100F46EA4 /* Products */;
 			projectDirPath = "";
@@ -661,38 +733,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0C35D5B02B9F392600F46EA4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		0C35D5B12B9F39EC00F46EA4 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0C35D5B32B9F3A0D00F46EA4 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0C35D5B02B9F392600F46EA4 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		0C35D5B52B9F3A1400F46EA4 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0C35D5B12B9F39EC00F46EA4 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		0C35D5822B9F298100F46EA4 /* kodeapp.xcdatamodeld */ = {
