@@ -15,6 +15,10 @@
 		0C35D5942B9F298300F46EA4 /* kodeappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5932B9F298300F46EA4 /* kodeappTests.swift */; };
 		0C35D59E2B9F298300F46EA4 /* kodeappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D59D2B9F298300F46EA4 /* kodeappUITests.swift */; };
 		0C35D5A02B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D59F2B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift */; };
+		0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5C82BA1E39000F46EA4 /* PeopleViewController.swift */; };
+		0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5CA2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift */; };
+		0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5CE2BA1E3D800F46EA4 /* PeopleTableView.swift */; };
+		0C35D5D12BA1E40700F46EA4 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		0C35D5992B9F298300F46EA4 /* kodeappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kodeappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C35D59D2B9F298300F46EA4 /* kodeappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kodeappUITests.swift; sourceTree = "<group>"; };
 		0C35D59F2B9F298300F46EA4 /* kodeappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kodeappUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0C35D5C82BA1E39000F46EA4 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		0C35D5CA2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewViewModel.swift; sourceTree = "<group>"; };
+		0C35D5CE2BA1E3D800F46EA4 /* PeopleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableView.swift; sourceTree = "<group>"; };
+		0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 				0C35D5B72BA1E19A00F46EA4 /* Core */,
 				0C35D5B82BA1E1A600F46EA4 /* Modules */,
 				0C35D5AD2B9F31DE00F46EA4 /* Resources */,
+				0C35D5C22BA1E2C700F46EA4 /* Helpers */,
 			);
 			path = kodeapp;
 			sourceTree = "<group>";
@@ -153,9 +162,9 @@
 		0C35D5B72BA1E19A00F46EA4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5C52BA1E35C00F46EA4 /* Models */,
+				0C35D5C12BA1E2AB00F46EA4 /* Assembly */,
 				0C35D5BF2BA1E23300F46EA4 /* Services */,
-				0C35D5BE2BA1E1DF00F46EA4 /* CoreData */,
-				0C35D5BD2BA1E1D900F46EA4 /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -173,6 +182,8 @@
 		0C35D5B92BA1E1B000F46EA4 /* People */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5C72BA1E37C00F46EA4 /* VIewModels */,
+				0C35D5C62BA1E37600F46EA4 /* Views */,
 			);
 			path = People;
 			sourceTree = "<group>";
@@ -198,13 +209,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		0C35D5BD2BA1E1D900F46EA4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		0C35D5BE2BA1E1DF00F46EA4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +219,7 @@
 		0C35D5BF2BA1E23300F46EA4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5BE2BA1E1DF00F46EA4 /* CoreData */,
 				0C35D5C02BA1E23A00F46EA4 /* Cache */,
 				0C35D5BC2BA1E1D400F46EA4 /* Network */,
 			);
@@ -226,6 +231,69 @@
 			children = (
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		0C35D5C12BA1E2AB00F46EA4 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		0C35D5C22BA1E2C700F46EA4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5C32BA1E2CE00F46EA4 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0C35D5C32BA1E2CE00F46EA4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0C35D5C52BA1E35C00F46EA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C35D5C62BA1E37600F46EA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5CC2BA1E3C000F46EA4 /* TableView */,
+				0C35D5C82BA1E39000F46EA4 /* PeopleViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C35D5C72BA1E37C00F46EA4 /* VIewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5CA2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift */,
+			);
+			path = VIewModels;
+			sourceTree = "<group>";
+		};
+		0C35D5CC2BA1E3C000F46EA4 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5CD2BA1E3CA00F46EA4 /* Cells */,
+				0C35D5CE2BA1E3D800F46EA4 /* PeopleTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		0C35D5CD2BA1E3CA00F46EA4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,8 +452,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
+				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
+				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
+				0C35D5D12BA1E40700F46EA4 /* PersonTableViewCell.swift in Sources */,
 				0C35D57C2B9F298100F46EA4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
