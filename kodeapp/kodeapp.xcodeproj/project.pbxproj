@@ -19,6 +19,8 @@
 		0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5CA2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift */; };
 		0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5CE2BA1E3D800F46EA4 /* PeopleTableView.swift */; };
 		0C35D5D12BA1E40700F46EA4 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */; };
+		0C35D5D32BA1E56A00F46EA4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */; };
+		0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		0C35D5CA2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewViewModel.swift; sourceTree = "<group>"; };
 		0C35D5CE2BA1E3D800F46EA4 /* PeopleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableView.swift; sourceTree = "<group>"; };
 		0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +255,7 @@
 		0C35D5C32BA1E2CE00F46EA4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 		0C35D5C62BA1E37600F46EA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5D42BA20BCF00F46EA4 /* SearchBar */,
 				0C35D5CC2BA1E3C000F46EA4 /* TableView */,
 				0C35D5C82BA1E39000F46EA4 /* PeopleViewController.swift */,
 			);
@@ -294,6 +300,14 @@
 				0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		0C35D5D42BA20BCF00F46EA4 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */,
+			);
+			path = SearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,11 +466,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C35D5D32BA1E56A00F46EA4 /* UIView+Ext.swift in Sources */,
 				0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
+				0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */,
 				0C35D5D12BA1E40700F46EA4 /* PersonTableViewCell.swift in Sources */,
 				0C35D57C2B9F298100F46EA4 /* SceneDelegate.swift in Sources */,
 			);
