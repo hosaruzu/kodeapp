@@ -78,9 +78,14 @@ private extension PeopleViewController {
             headerSearchBar.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
                 constant: -UIConstants.searchBarHorizontalOffset
-            )
+            ),
+
+            tableView.topAnchor.constraint(equalTo: headerSearchBar.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        //        tableView.pinToEdges(view)
+
     }
 }
 
