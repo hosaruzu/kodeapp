@@ -9,8 +9,14 @@ import UIKit
 
 final class PeopleTableView: UIView {
 
+    // MARK: - Callbacks
+
+    var onRefresh: (() -> Void)?
+
     // MARK: - Subviews
+
     private let tableView = UITableView()
+    private let refreshControl = UIRefreshControl()
 
     // MARK: - DEBUG
 
@@ -28,10 +34,17 @@ final class PeopleTableView: UIView {
         setupTableView()
         setupLayout()
         setupConstaints()
+        setupRefreshControl()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public
+
+    func endRefreshing() {
+        refreshControl.endRefreshing()
     }
 }
 
@@ -62,6 +75,21 @@ private extension PeopleTableView {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+}
+
+// MARK: - Setup refresh control
+
+private extension PeopleTableView {
+
+    func setupRefreshControl() {
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+    }
+
+    @objc
+    func onRefresh(_ sender: UIRefreshControl) {
+        onRefresh?()
     }
 }
 
