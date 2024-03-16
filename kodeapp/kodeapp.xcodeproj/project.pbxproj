@@ -22,6 +22,7 @@
 		0C35D5D32BA1E56A00F46EA4 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */; };
 		0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */; };
 		0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */; };
+		0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentrifiable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				0C35D5D22BA1E56A00F46EA4 /* UIView+Ext.swift */,
+				0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
+				0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */,
 				0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */,
 				0C35D5D12BA1E40700F46EA4 /* PersonTableViewCell.swift in Sources */,
 				0C35D57C2B9F298100F46EA4 /* SceneDelegate.swift in Sources */,

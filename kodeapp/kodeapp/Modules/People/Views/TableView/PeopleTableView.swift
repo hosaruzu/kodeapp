@@ -43,7 +43,7 @@ private extension PeopleTableView {
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(PersonTableViewCell.self)
     }
 }
 
@@ -73,7 +73,7 @@ extension PeopleTableView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PersonTableViewCell else { fatalError() }
+        let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
         cell.setup(with: data[indexPath.row])
         return cell
     }
