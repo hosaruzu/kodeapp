@@ -3,16 +3,11 @@
 ## Stack
 
 - iOS 13 (UIKit)
-- VIPER + Coordinator
-- SPM
+- MVVM + Coordinator
 - Structured concurrency
 - URLSession
 - Core data
 - Unit Tests
-
-## Dependencies
-
-- Kingfisher
-- Snapkit
+- No dependencies
 
 ## Demo
