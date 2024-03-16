@@ -24,6 +24,7 @@
 		0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */; };
 		0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */; };
 		0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DE2BA5F12100F46EA4 /* Loader.swift */; };
+		0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentrifiable.swift; sourceTree = "<group>"; };
 		0C35D5DE2BA5F12100F46EA4 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 		0C35D5C12BA1E2AB00F46EA4 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
+				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,

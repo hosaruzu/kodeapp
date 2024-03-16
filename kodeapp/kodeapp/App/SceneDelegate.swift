@@ -9,6 +9,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    private let appFactory: AppFactory = AppAssembly()
     var window: UIWindow?
 
     func scene(
@@ -17,13 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = UINavigationController(
-            rootViewController: PeopleViewController(
-                viewModel: PeopleViewViewModel()
-            )
-        )
-        window?.makeKeyAndVisible()
+        runUI(scene: windowScene)
+    }
+
+    func runUI(scene: UIWindowScene) {
+        let window = appFactory.makeKeyWindow()
+        window.windowScene = scene
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
