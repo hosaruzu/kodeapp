@@ -25,6 +25,8 @@
 		0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */; };
 		0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DE2BA5F12100F46EA4 /* Loader.swift */; };
 		0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */; };
+		0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */; };
+		0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5EA2BA8A89100F46EA4 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentrifiable.swift; sourceTree = "<group>"; };
 		0C35D5DE2BA5F12100F46EA4 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0C35D5EA2BA8A89100F46EA4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,7 @@
 		0C35D5C22BA1E2C700F46EA4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C35D5E62BA8A85E00F46EA4 /* Library */,
 				0C35D5C32BA1E2CE00F46EA4 /* Extensions */,
 			);
 			path = Helpers;
@@ -312,6 +317,23 @@
 				0C35D5D02BA1E40700F46EA4 /* PersonTableViewCell.swift */,
 			);
 			path = PersonCell;
+			sourceTree = "<group>";
+		};
+		0C35D5E62BA8A85E00F46EA4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5E72BA8A87700F46EA4 /* Coordinator */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		0C35D5E72BA8A87700F46EA4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */,
+				0C35D5EA2BA8A89100F46EA4 /* Router.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,6 +498,8 @@
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
+				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
+				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
