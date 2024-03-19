@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private let appFactory: AppFactory = AppAssembly()
+    private var appCoordinator: Coordinator?
     var window: UIWindow?
 
     func scene(
@@ -22,10 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func runUI(scene: UIWindowScene) {
-        let window = appFactory.makeKeyWindow()
+        let (window, coordinator) = appFactory.makeKeyWindowWithCoordinator()
         window.windowScene = scene
-        window.makeKeyAndVisible()
         self.window = window
+        self.appCoordinator = coordinator
+        window.makeKeyAndVisible()
+        coordinator.start()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
