@@ -27,6 +27,8 @@
 		0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */; };
 		0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */; };
 		0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5EA2BA8A89100F46EA4 /* Router.swift */; };
+		0C5C778C2BA9C7DB009833FC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5C778B2BA9C7DB009833FC /* AppCoordinator.swift */; };
+		0C5C778E2BA9C828009833FC /* PeopleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5C778D2BA9C828009833FC /* PeopleCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0C35D5EA2BA8A89100F46EA4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0C5C778B2BA9C7DB009833FC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0C5C778D2BA9C828009833FC /* PeopleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */,
+				0C5C778B2BA9C7DB009833FC /* AppCoordinator.swift */,
+				0C5C778D2BA9C828009833FC /* PeopleCoordinator.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -496,12 +502,14 @@
 				0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */,
 				0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
+				0C5C778C2BA9C7DB009833FC /* AppCoordinator.swift in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
+				0C5C778E2BA9C828009833FC /* PeopleCoordinator.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
 				0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */,
 				0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */,
