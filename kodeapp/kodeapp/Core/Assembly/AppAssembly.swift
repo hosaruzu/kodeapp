@@ -10,39 +10,66 @@ import UIKit
 final class AppAssembly {
 
     fileprivate let screenFactory: ScreenFactory
+    fileprivate let coordinatorFactory: CoordinatorFactory
 
     init() {
         screenFactory = ScreenFactoryImpl()
+        coordinatorFactory = CoordinatorFactoryImpl(screenFactory: screenFactory)
     }
 }
 
 protocol AppFactory {
     // Next: add cordinator
-    func makeKeyWindow() -> UIWindow
+    func makeKeyWindowWithCoordinator() -> (UIWindow, Coordinator)
 }
 
 extension AppAssembly: AppFactory {
 
-    func makeKeyWindow() -> UIWindow {
+    func makeKeyWindowWithCoordinator() -> (UIWindow, Coordinator) {
         let window = UIWindow()
-        let peopleViewController = screenFactory.makePeopleScreen()
-        let navigationController = UINavigationController(rootViewController: peopleViewController)
-        window.rootViewController = navigationController
-        return window
+        let rootVC = UINavigationController()
+        let router = RouterImp(rootController: rootVC)
+        let coordinator = coordinatorFactory.makeAppCoordinator(router: router)
+        window.rootViewController = rootVC
+        return (window, coordinator)
     }
 }
 
 protocol ScreenFactory {
-    func makePeopleScreen() -> UIViewController
+
+    func makePeopleScreen() -> PeopleViewController
 }
 
 final class ScreenFactoryImpl: ScreenFactory {
 
     @MainActor
-    func makePeopleScreen() -> UIViewController {
+    func makePeopleScreen() -> PeopleViewController {
         let viewModel = PeopleViewViewModel()
         let viewController = PeopleViewController(viewModel: viewModel)
 
         return viewController
+    }
+}
+
+protocol CoordinatorFactory {
+
+    func makeAppCoordinator(router: Router) -> AppCoordinator
+    func makePeopleCoordinator(router: Router) -> PeopleCoordinator
+}
+
+final class CoordinatorFactoryImpl: CoordinatorFactory {
+
+    private let screenFactory: ScreenFactory
+
+    fileprivate init(screenFactory: ScreenFactory) {
+        self.screenFactory = screenFactory
+    }
+
+    func makeAppCoordinator(router: Router) -> AppCoordinator {
+        return AppCoordinator(coordinatorFactory: self, router: router)
+    }
+
+    func makePeopleCoordinator(router: Router) -> PeopleCoordinator {
+        return PeopleCoordinator(screenFactory: screenFactory, router: router)
     }
 }
