@@ -12,6 +12,7 @@ final class PeopleTableView: UIView {
     // MARK: - Callbacks
 
     var onRefresh: (() -> Void)?
+    var onCellTap: (() -> Void)?
 
     // MARK: - Subviews
 
@@ -108,5 +109,6 @@ extension PeopleTableView: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        onCellTap?()
     }
 }

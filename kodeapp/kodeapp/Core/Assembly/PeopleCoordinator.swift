@@ -39,11 +39,14 @@ final class PeopleCoordinator: BaseCoordinator {
     private func showPeople() {
         let peopleScreen = screenFactory.makePeopleScreen()
 //        peopleScreen.onSelectPerson = { [weak self] in self?.showPerson() }
-        router.setRootModule(peopleScreen, hideBar: true)
+        router.setRootModule(peopleScreen)
+
+        // DEBUG
+        peopleScreen.onCellTap = { [weak self] in self?.showPerson() }
     }
 
     private func showPerson() {
-        // Person page
-        // router.push(person page)
+        let profileScreen = screenFactory.makeProfileScreen()
+        router.push(profileScreen)
     }
 }

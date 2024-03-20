@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         runUI(scene: windowScene)
+        configureNavigationBarAppearance()
     }
 
     func runUI(scene: UIWindowScene) {
@@ -29,6 +30,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.appCoordinator = coordinator
         window.makeKeyAndVisible()
         coordinator.start()
+    }
+
+    func configureNavigationBarAppearance() {
+        UINavigationBar.appearance().tintColor = .black
+        UINavigationBar.appearance().backIndicatorImage = UIImage(resource: .backIcon)
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(resource: .backIcon)
+        UIBarButtonItem.appearance()
+            .setBackButtonTitlePositionAdjustment(
+                UIOffset(horizontal: -1000, vertical: 0),
+                for: UIBarMetrics.default
+            )
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

@@ -18,6 +18,10 @@ final class PeopleViewController: UIViewController {
 
     private let viewModel: PeopleViewViewModel
 
+    // MARK: - DEBUG
+
+    var onCellTap: (() -> Void)?
+
     // MARK: - Init
 
     init(viewModel: PeopleViewViewModel) {
@@ -38,6 +42,14 @@ final class PeopleViewController: UIViewController {
         addSubviews()
         setupLayout()
         showLoader()
+        tableView.onCellTap = { [weak self] in
+            self?.onCellTap?()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
 
     // MARK: - UI constants
@@ -56,7 +68,6 @@ private extension PeopleViewController {
 
     func setupAppearance() {
         view.backgroundColor = .systemBackground
-        navigationController?.isNavigationBarHidden = true
     }
 }
 

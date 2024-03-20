@@ -38,6 +38,7 @@ extension AppAssembly: AppFactory {
 protocol ScreenFactory {
 
     func makePeopleScreen() -> PeopleViewController
+    func makeProfileScreen() -> ProfileViewController
 }
 
 final class ScreenFactoryImpl: ScreenFactory {
@@ -47,6 +48,13 @@ final class ScreenFactoryImpl: ScreenFactory {
         let viewModel = PeopleViewViewModel()
         let viewController = PeopleViewController(viewModel: viewModel)
 
+        return viewController
+    }
+
+    @MainActor
+    func makeProfileScreen() -> ProfileViewController {
+        let viewModel = ProfileViewViewModel()
+        let viewController = ProfileViewController(viewModel: viewModel)
         return viewController
     }
 }
