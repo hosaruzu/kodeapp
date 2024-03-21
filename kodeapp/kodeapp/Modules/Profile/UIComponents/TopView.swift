@@ -11,33 +11,10 @@ final class TopView: UIView {
 
     // MARK: - Subviews
 
-    private let personImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = .imagePlaceholder
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
-
-    private let personNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIConstants.nameFont
-        label.textColor = .label
-        return label
-    }()
-
-    private let personRoleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIConstants.roleFont
-        label.textColor = .secondaryLabel
-        return label
-    }()
-
-    private let personTagLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIConstants.tagFont
-        label.textColor = .tertiaryLabel
-        return label
-    }()
+    private let personImageView = Avatar()
+    private let personNameLabel = Title(font: UIConstants.nameFont)
+    private let personRoleLabel = Title(font: UIConstants.roleFont, color: .secondaryLabel)
+    private let personTagLabel = Title(font: UIConstants.tagFont, color: .tertiaryLabel)
 
     // MARK: - Init
 
