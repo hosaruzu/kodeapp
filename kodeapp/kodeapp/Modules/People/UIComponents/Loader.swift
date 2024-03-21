@@ -19,7 +19,7 @@ final class Loader: UIView {
         super.init(frame: frame)
         setupSubviews()
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -32,7 +32,7 @@ final class Loader: UIView {
     }
 
     // MARK: - Public
-    
+
     func start() {
         activityIndicator.startAnimating()
     }

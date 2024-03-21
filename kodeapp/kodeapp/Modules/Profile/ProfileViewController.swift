@@ -16,6 +16,7 @@ final class ProfileViewController: UIViewController {
     // MARK: - Subviews
 
     private let topView = TopView()
+    private let tableView = ProfileTableView()
 
     // MARK: - Init
 
@@ -32,15 +33,23 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .secondarySystemBackground
         navigationController?.isNavigationBarHidden = false
 
-        view.addSubviews([topView])
+        view.addSubviews([
+            topView,
+            tableView
+        ])
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -24),
             topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topView.heightAnchor.constraint(equalToConstant: view.bounds.height / 4)
+            topView.heightAnchor.constraint(equalToConstant: view.bounds.height / 4),
+
+            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
