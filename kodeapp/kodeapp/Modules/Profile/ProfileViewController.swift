@@ -29,22 +29,51 @@ final class ProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private enum UIConstants {
+        static let topViewToSafeAreaOffset: CGFloat = -24
+        static let topViewHeightMultiplier: CGFloat = 4
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupAppearance()
+        setupSubviews()
+        setupConstraints()
+    }
+}
+
+// MARK: - Setup Appearance
+
+private extension ProfileViewController {
+
+    func setupAppearance() {
         view.backgroundColor = .secondarySystemBackground
         navigationController?.isNavigationBarHidden = false
+    }
+}
 
+// MARK: - Setup layout
+
+private extension ProfileViewController {
+
+    func setupSubviews() {
         view.addSubviews([
             topView,
             tableView
         ])
+    }
+
+    func setupConstraints() {
         NSLayoutConstraint.activate([
-            topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -24),
+            topView.topAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.topAnchor,
+                constant: UIConstants.topViewToSafeAreaOffset),
             topView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topView.heightAnchor.constraint(equalToConstant: view.bounds.height / 4),
+            topView.heightAnchor.constraint(
+                equalToConstant: view.bounds.height / UIConstants.topViewHeightMultiplier),
 
             tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

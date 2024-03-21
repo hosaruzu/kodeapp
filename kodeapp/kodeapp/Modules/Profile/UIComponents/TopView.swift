@@ -46,8 +46,17 @@ final class TopView: UIView {
         static let nameFont: UIFont = .systemFont(ofSize: 24, weight: .bold)
         static let roleFont: UIFont = .systemFont(ofSize: 13, weight: .regular)
         static let tagFont: UIFont = .systemFont(ofSize: 17, weight: .regular)
+
+        static let xStackSpacing: CGFloat = 4
+        static let mainStackSpacing: CGFloat = 12
+        static let imageToTitleOffset: CGFloat = 24
+
+        static let imageWidth: CGFloat = 104
+        static let imageheight: CGFloat = 104
     }
 }
+
+// MARK: - Setup layout
 
 private extension TopView {
 
@@ -59,7 +68,7 @@ private extension TopView {
             ])
         xStack.axis = .horizontal
         xStack.alignment = .center
-        xStack.spacing = 4
+        xStack.spacing = UIConstants.xStackSpacing
 
         let mainStack = UIStackView(
             arrangedSubviews: [
@@ -68,12 +77,15 @@ private extension TopView {
                 personRoleLabel
             ])
         mainStack.axis = .vertical
-        mainStack.spacing = 12
-        mainStack.setCustomSpacing(24, after: personImageView)
+        mainStack.spacing = UIConstants.mainStackSpacing
+        mainStack.setCustomSpacing(UIConstants.imageToTitleOffset, after: personImageView)
         mainStack.alignment = .center
 
         addSubviews([mainStack])
         NSLayoutConstraint.activate([
+            personImageView.widthAnchor.constraint(equalToConstant: UIConstants.imageWidth),
+            personImageView.heightAnchor.constraint(equalToConstant: UIConstants.imageheight),
+
             mainStack.topAnchor.constraint(equalTo: topAnchor),
             mainStack.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
