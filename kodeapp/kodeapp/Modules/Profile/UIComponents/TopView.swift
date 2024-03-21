@@ -13,8 +13,12 @@ final class TopView: UIView {
 
     private let personImageView = Avatar()
     private let personNameLabel = Title(font: UIConstants.nameFont)
-    private let personRoleLabel = Title(font: UIConstants.roleFont, color: .secondaryLabel)
-    private let personTagLabel = Title(font: UIConstants.tagFont, color: .tertiaryLabel)
+    private let personRoleLabel = Title(
+        font: UIConstants.roleFont,
+        color: AppConstants.Color.textSecondary)
+    private let personTagLabel = Title(
+        font: UIConstants.tagFont,
+        color: AppConstants.Color.textTertiary)
 
     // MARK: - Init
 

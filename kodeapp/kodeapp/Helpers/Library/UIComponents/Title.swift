@@ -13,13 +13,13 @@ final class Title: UILabel {
 
     init(
         font: UIFont = .systemFont(ofSize: 14),
-        color: UIColor = .label
+        color: UIColor = AppConstants.Color.textPrimary
     ) {
         super.init(frame: .zero)
         self.font = font
         self.textColor = color
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
