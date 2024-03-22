@@ -9,6 +9,10 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
 
+    // MARK: - Callbacks
+
+    var onPhoneCellTap: ((String) -> Void)?
+
     // MARK: - View model
 
     private let viewModel: ProfileViewViewModel
@@ -41,6 +45,7 @@ final class ProfileViewController: UIViewController {
         setupAppearance()
         setupSubviews()
         setupConstraints()
+        tableView.onPhoneCellTap = onPhoneCellTap
     }
 }
 
