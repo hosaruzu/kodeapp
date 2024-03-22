@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum CellType {
+    case birthDay
+    case phone
+}
+
 final class ProfileTableViewCell: UITableViewCell {
 
     // MARK: - Subviews
@@ -49,10 +54,18 @@ final class ProfileTableViewCell: UITableViewCell {
 
     // MARK: - Public
 
-    func setup(image: UIImage, title: String, subtitle: String? = nil) {
-        iconImageView.image = image
-        titleLabel.text = title.formatToPhoneNumber()
-        subtitleLabel.text = subtitle
+    func setup(type: CellType, title: String, subtitle: String? = nil) {
+        switch type {
+        case .birthDay:
+            iconImageView.image = UIImage(resource: .favoriteIcon)
+            titleLabel.text = title
+            subtitleLabel.text = subtitle
+            selectionStyle = .none
+            isUserInteractionEnabled = false
+        case .phone:
+            iconImageView.image = UIImage(resource: .phoneIcon)
+            titleLabel.text = title.formatToPhoneNumber()
+        }
     }
 }
 

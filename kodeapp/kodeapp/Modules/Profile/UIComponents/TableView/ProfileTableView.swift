@@ -83,10 +83,10 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeue(ProfileTableViewCell.self, for: indexPath)
         switch indexPath.section {
         case 0:
-            cell.setup(image: UIImage(resource: .favoriteIcon), title: "Birth date", subtitle: "28 years")
+            cell.setup(type: .birthDay, title: "Birth date", subtitle: "28 years")
             return cell
         case 1:
-          cell.setup(image: UIImage(resource: .phoneIcon), title: "980-962-6297")
+            cell.setup(type: .phone, title: "980-962-6297")
             return cell
         default:
             break
@@ -95,9 +95,9 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 1:
+            tableView.deselectRow(at: indexPath, animated: true)
             onPhoneCellTap?("980-962-6297")
         default:
             break
