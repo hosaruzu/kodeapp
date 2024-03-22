@@ -49,7 +49,6 @@ final class SearchBar: UISearchBar {
     private func setupTextField() {
         searchTextField.layer.cornerRadius = 16
         searchTextField.clipsToBounds = true
-        searchTextField.backgroundColor = .tertiarySystemBackground
         searchTextField.attributedPlaceholder = NSAttributedString(
             string: "Search name, tag, email...",
             attributes: [
