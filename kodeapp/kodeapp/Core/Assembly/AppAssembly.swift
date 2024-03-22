@@ -39,6 +39,7 @@ protocol ScreenFactory {
 
     func makePeopleScreen() -> PeopleViewController
     func makeProfileScreen() -> ProfileViewController
+    func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController
 }
 
 final class ScreenFactoryImpl: ScreenFactory {
@@ -56,6 +57,28 @@ final class ScreenFactoryImpl: ScreenFactory {
         let viewModel = ProfileViewViewModel()
         let viewController = ProfileViewController(viewModel: viewModel)
         return viewController
+    }
+
+    func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController {
+        let application = UIApplication.shared
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let phoneNumberFormatted = phoneNumber.formatToPhoneNumber()
+
+        let callPhoneButton = UIAlertAction(title: "\(phoneNumberFormatted)", style: .default) { _ in
+            let cleanedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+            if let phoneCallURL = URL(string: "tel://+7\(cleanedPhoneNumber)"),
+               application.canOpenURL(phoneCallURL) {
+                print("Will be call \(cleanedPhoneNumber)")
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            } else {
+                print("Can't open phone \(cleanedPhoneNumber)")
+            }
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.view.tintColor = AppConstants.Color.textPrimary
+        alertController.addAction(callPhoneButton)
+        alertController.addAction(cancelButton)
+        return alertController
     }
 }
 
