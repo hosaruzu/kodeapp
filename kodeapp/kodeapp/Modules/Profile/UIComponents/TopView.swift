@@ -61,6 +61,9 @@ final class TopView: UIView {
 private extension TopView {
 
     func setupLayout() {
+        personImageView.layer.cornerRadius = UIConstants.imageWidth / 2
+        personImageView.clipsToBounds = true
+
         let xStack = UIStackView(
             arrangedSubviews: [
                 personNameLabel,
