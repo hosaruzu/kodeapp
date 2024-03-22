@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class PeopleCoordinator: BaseCoordinator {
 
@@ -47,6 +48,12 @@ final class PeopleCoordinator: BaseCoordinator {
 
     private func showPerson() {
         let profileScreen = screenFactory.makeProfileScreen()
+        profileScreen.onPhoneCellTap = { [weak self] phone in self?.presentAC(phone: phone) }
         router.push(profileScreen)
+    }
+
+    private func presentAC(phone: String) {
+        let phoneAlertController = screenFactory.makeCallPhoneAlert(with: phone)
+        router.present(phoneAlertController, animated: true)
     }
 }

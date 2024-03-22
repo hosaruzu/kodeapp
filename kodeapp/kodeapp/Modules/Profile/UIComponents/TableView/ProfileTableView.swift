@@ -9,6 +9,10 @@ import UIKit
 
 final class ProfileTableView: UIView {
 
+    // MARK: - Callbacks
+
+    var onPhoneCellTap: ((String) -> Void)?
+
     // MARK: - Subviews
 
     private let tableView = UITableView()
@@ -82,7 +86,7 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
             cell.setup(image: UIImage(resource: .favoriteIcon), title: "Birth date", subtitle: "28 years")
             return cell
         case 1:
-          cell.setup(image: UIImage(resource: .phoneIcon), title: "+7 (999) 999 99 99")
+          cell.setup(image: UIImage(resource: .phoneIcon), title: "980-962-6297")
             return cell
         default:
             break
@@ -92,6 +96,12 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 1:
+            onPhoneCellTap?("980-962-6297")
+        default:
+            break
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

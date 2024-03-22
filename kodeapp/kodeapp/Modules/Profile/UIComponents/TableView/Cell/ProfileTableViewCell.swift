@@ -9,10 +9,6 @@ import UIKit
 
 final class ProfileTableViewCell: UITableViewCell {
 
-    // MARK: - Callbacks
-
-    var onPhoneCellTap: (() -> Void)?
-
     // MARK: - Subviews
 
     private let iconImageView: UIImageView = {
@@ -55,7 +51,7 @@ final class ProfileTableViewCell: UITableViewCell {
 
     func setup(image: UIImage, title: String, subtitle: String? = nil) {
         iconImageView.image = image
-        titleLabel.text = title
+        titleLabel.text = title.formatToPhoneNumber()
         subtitleLabel.text = subtitle
     }
 }
