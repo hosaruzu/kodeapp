@@ -44,6 +44,7 @@
 		0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */; };
 		0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */; };
 		0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */; };
+		0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequst.swift; sourceTree = "<group>"; };
+		0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */,
 				0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */,
 				0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */,
+				0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				0CA5AF902BAC6AF80022BE5D /* Avatar.swift in Sources */,
 				0C5C778C2BA9C7DB009833FC /* AppCoordinator.swift in Sources */,
 				0C5C77952BAB1E30009833FC /* TopView.swift in Sources */,
+				0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C5C77912BA9D6AB009833FC /* ProfileViewController.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,

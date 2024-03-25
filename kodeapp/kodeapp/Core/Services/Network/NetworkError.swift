@@ -12,7 +12,7 @@ enum NetworkError: Error {
         case notAvailable
         case responseError(statusCode: Int)
         case noInternetConnection
-        case parsingFailure
+        case decodingFailure
         case timeout
         case unknown
     }
@@ -28,7 +28,7 @@ extension NetworkError {
             "Error occured with status code: \(statusCode)"
         case .noInternetConnection, .timeout:
             "No internet connection"
-        case .parsingFailure:
+        case .decodingFailure:
             "Can't parse data"
         case .unknown:
             "Unknown error occured: \(localizedDescription)"
