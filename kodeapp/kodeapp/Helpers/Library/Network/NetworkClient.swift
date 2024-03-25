@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkClient: AnyObject {
 
-    func send(request: URLRequest) async throws -> Data
+    func send(_ request: URLRequest) async throws -> Data
 }
 
 final class NetworkClientImpl: NetworkClient {
@@ -20,7 +20,7 @@ final class NetworkClientImpl: NetworkClient {
         self.urlSession = urlSession
     }
 
-    func send(request: URLRequest) async throws -> Data {
+    func send(_ request: URLRequest) async throws -> Data {
         do {
             let (data, response) = try await urlSession.data(for: request)
             guard let response = response as? HTTPURLResponse else {

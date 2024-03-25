@@ -14,7 +14,7 @@ protocol NetworkRequst: AnyObject {
 
 final class NetworkRequstsImpl: NetworkRequst {
 
-    func build(endpoint: any Endpoint) throws -> URLRequest {
+    func build(endpoint: Endpoint) throws -> URLRequest {
         guard let url = endpoint.url else { throw NetworkError.cantBuildUrl }
         var urlRequest = URLRequest(url: url, timeoutInterval: 15)
         urlRequest.httpMethod = endpoint.method.name

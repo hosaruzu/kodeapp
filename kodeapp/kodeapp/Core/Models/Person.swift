@@ -14,7 +14,7 @@ struct PeopleResponse: Decodable {
 struct Person: Decodable {
     let id: String
     let firstName: String
-    let lastname: String
+    let lastName: String
     let userTag: String
     let department: String
     let position: String
