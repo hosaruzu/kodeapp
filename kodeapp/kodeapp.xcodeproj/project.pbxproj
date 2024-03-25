@@ -42,6 +42,7 @@
 		0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */; };
 		0CA5AFA12BB160940022BE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */; };
 		0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */; };
+		0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleEndpoint.swift; sourceTree = "<group>"; };
 		0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			children = (
 				0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */,
 				0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */,
+				0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */,
 				0C5C779B2BAB45AD009833FC /* ProfileTableViewCell.swift in Sources */,
 				0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */,
+				0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */,
 				0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */,
 				0C5C77932BA9D6B7009833FC /* ProfileViewViewModel.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
