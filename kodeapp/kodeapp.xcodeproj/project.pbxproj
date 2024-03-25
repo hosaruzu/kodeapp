@@ -45,6 +45,7 @@
 		0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */; };
 		0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */; };
 		0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */; };
+		0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequst.swift; sourceTree = "<group>"; };
 		0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecoder.swift; sourceTree = "<group>"; };
+		0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,10 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */,
-				0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */,
-				0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */,
-				0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */,
-				0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -425,6 +423,11 @@
 		0CA5AFA22BB1627C0022BE5D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */,
+				0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */,
+				0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */,
+				0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */,
+				0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */,
 				0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */,
 			);
 			path = Network;
@@ -608,6 +611,7 @@
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0CA5AF9D2BB15F260022BE5D /* Person.swift in Sources */,
 				0CA5AFA12BB160940022BE5D /* HTTPMethod.swift in Sources */,
+				0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */,
 				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0CA5AF922BAC6C860022BE5D /* Title.swift in Sources */,
