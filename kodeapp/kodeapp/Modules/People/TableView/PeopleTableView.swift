@@ -21,12 +21,11 @@ final class PeopleTableView: UIView {
 
     // MARK: - DEBUG
 
-    private let data: [PersonTableViewCellViewModel] = [
-        .init(name: "Person", role: "role", tag: "pr"),
-        .init(name: "Person", role: "role", tag: "pr"),
-        .init(name: "Person", role: "role", tag: "pr"),
-        .init(name: "Person", role: "role", tag: "pr")
-    ]
+     private var data: [PersonTableViewCellViewModel] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     // MARK: - Init
 
