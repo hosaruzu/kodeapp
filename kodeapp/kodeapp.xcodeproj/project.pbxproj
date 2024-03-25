@@ -43,6 +43,7 @@
 		0CA5AFA12BB160940022BE5D /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */; };
 		0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */; };
 		0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */; };
+		0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequst.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */,
 				0CA5AFA02BB160940022BE5D /* HTTPMethod.swift */,
 				0CA5AFA52BB162EB0022BE5D /* NetworkError.swift */,
+				0CA5AFA72BB163620022BE5D /* NetworkRequst.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				0C5C77912BA9D6AB009833FC /* ProfileViewController.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
+				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0CA5AF9D2BB15F260022BE5D /* Person.swift in Sources */,
