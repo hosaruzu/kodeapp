@@ -21,4 +21,3 @@ struct Person: Decodable {
     let birthday: String
     let phone: String
 }
-

@@ -31,7 +31,7 @@ extension PeopleEndpoint: Endpoint {
             return "/\(id)"
         }
     }
-    
+
     var url: URL? {
         var components = URLComponents()
         components.scheme = scheme
