@@ -47,6 +47,7 @@
 		0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */; };
 		0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */; };
 		0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */; };
+		0CA5AFB02BB1CAC00022BE5D /* NetworkCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDecoder.swift; sourceTree = "<group>"; };
 		0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworkService.swift; sourceTree = "<group>"; };
+		0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,6 +434,7 @@
 				0CA5AFA92BB1642B0022BE5D /* NetworkDecoder.swift */,
 				0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */,
 				0CA5AFA32BB1628B0022BE5D /* Endpoint.swift */,
+				0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				0C35D5D32BA1E56A00F46EA4 /* UIView+Ext.swift in Sources */,
 				0C5C77972BAB42C6009833FC /* ProfileTableView.swift in Sources */,
 				0C35D5CF2BA1E3D800F46EA4 /* PeopleTableView.swift in Sources */,
+				0CA5AFB02BB1CAC00022BE5D /* NetworkCacheService.swift in Sources */,
 				0C5C779B2BAB45AD009833FC /* ProfileTableViewCell.swift in Sources */,
 				0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */,
 				0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */,

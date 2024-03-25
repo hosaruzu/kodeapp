@@ -37,7 +37,6 @@ extension PeopleEndpoint: Endpoint {
         components.scheme = scheme
         components.host = host
         components.path = path
-        print(components.url)
         guard let url = components.url else { return nil }
         return url
     }

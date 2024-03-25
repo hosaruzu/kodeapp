@@ -15,12 +15,21 @@ protocol NetworkClient: AnyObject {
 final class NetworkClientImpl: NetworkClient {
 
     private let urlSession: URLSession
+    private let cacheService: NetworkCacheService
 
-    init(urlSession: URLSession) {
+    init(
+        urlSession: URLSession,
+        cacheService: NetworkCacheService
+    ) {
         self.urlSession = urlSession
+        self.cacheService = cacheService
     }
 
     func send(_ request: URLRequest) async throws -> Data {
+        if let cachedData = cacheService.retrieveCachedData(for: request) {
+            return cachedData
+        }
+
         do {
             let (data, response) = try await urlSession.data(for: request)
             guard let response = response as? HTTPURLResponse else {
@@ -28,6 +37,9 @@ final class NetworkClientImpl: NetworkClient {
             }
             switch response.statusCode {
             case 200...299:
+                cacheService.cacheData(
+                    from: request,
+                    cachedURLResponse: CachedURLResponse(response: response, data: data))
                 return data
             default:
                 throw NetworkError.responseError(statusCode: response.statusCode)
