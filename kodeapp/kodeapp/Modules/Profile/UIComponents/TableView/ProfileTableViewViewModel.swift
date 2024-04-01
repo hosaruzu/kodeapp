@@ -8,10 +8,19 @@
 import Foundation
 
 struct ProfileTableViewViewModel {
-    let phoneNumber: String
-    let birthDate: String
+    private let phoneNumber: String
+    private let birthDate: String
 
-    var formattedBirthday: String {
+    init(phoneNumber: String, birthDate: String) {
+        self.phoneNumber = phoneNumber
+        self.birthDate = birthDate
+    }
+
+    var phone: String {
+        phoneNumber.formatToPhoneNumber()
+    }
+
+    var birthday: String {
         guard let formatted = birthDate.convertDate(inputDate: birthDate) else { return "No birthday" }
         return formatted
     }

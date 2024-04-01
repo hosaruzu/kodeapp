@@ -27,7 +27,7 @@ final class ProfileViewViewModel {
     // MARK: - Public properties
 
     var tableViewModel: ProfileTableViewViewModel {
-        .init(phoneNumber: person.phone.formatToPhoneNumber(), birthDate: person.birthday)
+        .init(phoneNumber: person.phone, birthDate: person.birthday)
     }
 
     var id: String {

@@ -88,10 +88,10 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeue(ProfileTableViewCell.self, for: indexPath)
         switch indexPath.section {
         case 0:
-            cell.setup(type: .birthDay, title: viewModel.formattedBirthday, subtitle: viewModel.age)
+            cell.setup(type: .birthDay, title: viewModel.birthday, subtitle: viewModel.age)
             return cell
         case 1:
-            cell.setup(type: .phone, title: viewModel.phoneNumber)
+            cell.setup(type: .phone, title: viewModel.phone)
             return cell
         default:
             break
