@@ -9,9 +9,14 @@ import UIKit
 
 final class PersonTableViewCell: UITableViewCell {
 
+    // MARK: - Task for cancelation
+
+    private var downloadTask: (Task<Void, Never>)?
+
     // MARK: - Subviews
 
     private let personImageView = Avatar()
+    private let loader = LoaderView()
     private let personNameLabel = Title(font: UIConstants.nameFont)
     private let personRoleLabel = Title(
         font: UIConstants.roleFont,
@@ -32,7 +37,9 @@ final class PersonTableViewCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
-        personImageView.image = .imagePlaceholder
+        downloadTask?.cancel()
+        loader.start()
+        personImageView.image = nil
         personNameLabel.text = nil
         personRoleLabel.text = nil
         personTagLabel.text = nil
@@ -51,14 +58,25 @@ final class PersonTableViewCell: UITableViewCell {
 
         static let contentVerticalOffset: CGFloat = 6
         static let contentHorizontalOffset: CGFloat = 16
+
+        static let imageWidth: CGFloat = 72
+        static let imageHeight: CGFloat = 72
     }
 
     // MARK: - Public
 
-    func setup(with model: PersonTableViewCellViewModel) {
-        personTagLabel.text = model.tag
-        personNameLabel.text = model.name
-        personRoleLabel.text = model.role
+    func setup(with viewModel: PersonTableViewCellViewModel) {
+        personTagLabel.text = viewModel.personTag
+        personNameLabel.text = viewModel.fullName
+        personRoleLabel.text = viewModel.personPosition
+
+        downloadTask = Task {
+            await self.personImageView
+                .setImage(
+                    viewModel.personId,
+                    size: .big,
+                    indicator: loader)
+        }
     }
 }
 
@@ -93,10 +111,18 @@ private extension PersonTableViewCell {
         cellStack.alignment = .center
 
         contentView.addSubviews([
-            cellStack
+            cellStack,
+            loader
         ])
 
         NSLayoutConstraint.activate([
+            loader.widthAnchor.constraint(equalToConstant: UIConstants.imageWidth),
+            loader.heightAnchor.constraint(equalToConstant: UIConstants.imageHeight),
+            loader.centerYAnchor.constraint(equalTo: personImageView.centerYAnchor),
+            loader.centerXAnchor.constraint(equalTo: personImageView.centerXAnchor),
+            personImageView.widthAnchor.constraint(equalToConstant: UIConstants.imageWidth),
+            personImageView.heightAnchor.constraint(equalToConstant: UIConstants.imageHeight),
+
             cellStack.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
                 constant: UIConstants.contentVerticalOffset),

@@ -9,6 +9,8 @@ import UIKit
 
 enum AppConstants {
 
+    static let imageApiHost = "https://robohash.org"
+
     enum Color {
         static let accent = UIColor.accent
 
@@ -20,7 +22,8 @@ enum AppConstants {
         static let textTertiary = UIColor.tertiaryLabel
     }
 
-    enum Font {
-
+    enum ImageSize: String {
+        case small = "60x60"
+        case big = "120x120"
     }
 }

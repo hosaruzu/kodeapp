@@ -21,9 +21,13 @@ final class PeopleTableView: UIView {
 
     // MARK: - DEBUG
 
-     private var data: [PersonTableViewCellViewModel] = [] {
+    private var viewModel: PeopleViewViewModel? {
         didSet {
             tableView.reloadData()
+            UIView.animate(withDuration: 0.4) {
+                self.tableView.alpha = 1
+                self.tableView.isHidden = false
+            }
         }
     }
 
@@ -46,6 +50,10 @@ final class PeopleTableView: UIView {
     func endRefreshing() {
         refreshControl.endRefreshing()
     }
+
+    func configure(with viewModel: PeopleViewViewModel?) {
+        self.viewModel = viewModel
+    }
 }
 
 // MARK: - Setup TableView
@@ -53,6 +61,8 @@ final class PeopleTableView: UIView {
 private extension PeopleTableView {
 
     func setupTableView() {
+        tableView.alpha = 0
+        tableView.isHidden = true
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,6 +100,8 @@ private extension PeopleTableView {
     @objc
     func onRefresh(_ sender: UIRefreshControl) {
         onRefresh?()
+        tableView.reloadData()
+        endRefreshing()
     }
 }
 
@@ -97,12 +109,13 @@ private extension PeopleTableView {
 
 extension PeopleTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        viewModel?.itemsCount ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
-        cell.setup(with: data[indexPath.row])
+        guard let viewModel = viewModel?.cellViewModelFor(indexPath) else { fatalError("No view model") }
+        cell.setup(with: viewModel)
         return cell
     }
 

@@ -10,17 +10,14 @@ import UIKit
 final class PeopleViewController: UIViewController {
 
     // MARK: - Subviews
+
     private let headerSearchBar = SearchBar()
     private let tableView = PeopleTableView()
     private let loader = Loader()
 
     // MARK: - View model
 
-    private let viewModel: PeopleViewViewModel
-
-    // MARK: - DEBUG
-
-    var onCellTap: (() -> Void)?
+    private var viewModel: PeopleViewViewModel
 
     // MARK: - Init
 
@@ -42,14 +39,33 @@ final class PeopleViewController: UIViewController {
         addSubviews()
         setupLayout()
         showLoader()
-        tableView.onCellTap = { [weak self] in
-            self?.onCellTap?()
-        }
+        setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+
+    // MARK: - Setup bindings
+
+    private func setupBindings() {
+        viewModel.onLoad = { [weak self] in
+            self?.display(with: self?.viewModel)
+        }
+
+        tableView.onRefresh = { [weak self] in
+            self?.viewModel.onRefresh()
+        }
+
+        tableView.onCellTap = { [weak self] in
+            self?.viewModel.onCellTap()
+        }
+    }
+
+    private func display(with viewModel: PeopleViewViewModel?) {
+        tableView.configure(with: self.viewModel)
+        loader.stop()
     }
 
     // MARK: - UI constants

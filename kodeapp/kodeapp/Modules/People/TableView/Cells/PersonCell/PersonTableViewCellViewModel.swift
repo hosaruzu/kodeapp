@@ -7,8 +7,27 @@
 
 import Foundation
 
-struct PersonTableViewCellViewModel {
-    let name: String
-    let role: String
-    let tag: String
+final class PersonTableViewCellViewModel {
+
+    private let person: Person
+
+    init(person: Person) {
+        self.person = person
+    }
+
+    var fullName: String {
+        "\(person.firstName) \(person.lastName)"
+    }
+
+    var personPosition: String {
+        person.position
+    }
+
+    var personTag: String {
+        person.userTag
+    }
+
+    var personId: String {
+        person.id
+    }
 }

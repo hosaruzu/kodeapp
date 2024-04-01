@@ -9,16 +9,33 @@ import UIKit
 
 final class AppAssembly {
 
-    fileprivate let screenFactory: ScreenFactory
-    fileprivate let coordinatorFactory: CoordinatorFactory
+    fileprivate let screenFactory: ScreenFactoryImpl
+    fileprivate let coordinatorFactory: CoordinatorFactoryImpl
+    fileprivate let urlSession: URLSession
+    fileprivate let urlCache: URLCache
+    fileprivate let userDefaults: UserDefaults
+    fileprivate let networkCacheService: NetworkCacheServiceImpl
+    fileprivate let networkClient: NetworkClientImpl
+    fileprivate let decoder: NetworkDecoderImpl
+    fileprivate let request: NetworkRequstsImpl
+    fileprivate let networkService: PeopleNetworkServiceImpl
 
     init() {
         screenFactory = ScreenFactoryImpl()
         coordinatorFactory = CoordinatorFactoryImpl(screenFactory: screenFactory)
 
+        urlSession = .shared
+        urlCache = .shared
+        urlCache.memoryCapacity = 10_000_000 // ~10 MB memory space
+        urlCache.diskCapacity = 1_000_000_000 // ~1GB disk cache space
+        userDefaults = .standard
+        decoder = NetworkDecoderImpl()
+        request = NetworkRequstsImpl()
+        networkCacheService = NetworkCacheServiceImpl(userDefaults: userDefaults, urlCache: urlCache)
+        networkClient = NetworkClientImpl(urlSession: urlSession, cacheService: networkCacheService)
+        networkService = PeopleNetworkServiceImpl(networkClient: networkClient, decoder: decoder, request: request)
 
-//        URLCache.shared.memoryCapacity = 10_000_000 // ~10 MB memory space
-//        URLCache.shared.diskCapacity = 1_000_000_000 // ~1GB disk cache space
+        screenFactory.appAssembly = self
     }
 }
 
@@ -41,18 +58,21 @@ extension AppAssembly: AppFactory {
 
 protocol ScreenFactory {
 
-    func makePeopleScreen() -> PeopleViewController
+    func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController
     func makeProfileScreen() -> ProfileViewController
     func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController
 }
 
 final class ScreenFactoryImpl: ScreenFactory {
 
-    @MainActor
-    func makePeopleScreen() -> PeopleViewController {
-        let viewModel = PeopleViewViewModel()
-        let viewController = PeopleViewController(viewModel: viewModel)
+    fileprivate weak var appAssembly: AppAssembly!
+    fileprivate init() {}
 
+    @MainActor
+    func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController {
+        let viewModel = PeopleViewViewModel(networkService: appAssembly.networkService, coordinator: coordinator)
+//        viewModel.coordinator = coordinator
+        let viewController = PeopleViewController(viewModel: viewModel)
         return viewController
     }
 
