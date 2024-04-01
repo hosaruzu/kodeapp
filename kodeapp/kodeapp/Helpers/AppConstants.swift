@@ -9,8 +9,6 @@ import UIKit
 
 enum AppConstants {
 
-    static let imageApiHost = "https://robohash.org"
-
     enum Color {
         static let accent = UIColor.accent
 

@@ -96,7 +96,7 @@ extension ProfileTableView: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
-        return UITableViewCell()
+        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

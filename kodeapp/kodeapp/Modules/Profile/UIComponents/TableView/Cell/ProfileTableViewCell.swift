@@ -59,11 +59,13 @@ final class ProfileTableViewCell: UITableViewCell {
         switch type {
         case .birthDay:
             iconImageView.image = UIImage(resource: .favoriteIcon)
+            iconImageView.tintColor = .label
             subtitleLabel.text = subtitle
             selectionStyle = .none
             isUserInteractionEnabled = false
         case .phone:
             iconImageView.image = UIImage(resource: .phoneIcon)
+            iconImageView.tintColor = .label
         }
     }
 }
