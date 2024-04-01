@@ -58,8 +58,8 @@ final class PeopleViewController: UIViewController {
             self?.viewModel.onRefresh()
         }
 
-        tableView.onCellTap = { [weak self] in
-            self?.viewModel.onCellTap()
+        tableView.onCellTap = { [weak self] person in
+            self?.viewModel.onCellTap(with: person)
         }
     }
 

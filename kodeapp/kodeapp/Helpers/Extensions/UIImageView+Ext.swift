@@ -9,9 +9,9 @@ import UIKit
 
 extension UIImageView {
 
-    func setImage(_ id: String, size: AppConstants.ImageSize, indicator: Loadable) async {
+    func setImage(_ id: String, size: AppConstants.ImageSize, indicator: Loadable? = nil) async {
         guard let imageData = try? await ImageLoader.shared.downloadImage(id, size: size) else { return }
-        indicator.stop()
+        indicator?.stop()
         self.image = UIImage(data: imageData)
     }
 }

@@ -59,7 +59,7 @@ extension AppAssembly: AppFactory {
 protocol ScreenFactory {
 
     func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController
-    func makeProfileScreen() -> ProfileViewController
+    func makeProfileScreen(with person: Person, coordinator: PeopleCoordinator) -> ProfileViewController
     func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController
 }
 
@@ -71,14 +71,13 @@ final class ScreenFactoryImpl: ScreenFactory {
     @MainActor
     func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController {
         let viewModel = PeopleViewViewModel(networkService: appAssembly.networkService, coordinator: coordinator)
-//        viewModel.coordinator = coordinator
         let viewController = PeopleViewController(viewModel: viewModel)
         return viewController
     }
 
     @MainActor
-    func makeProfileScreen() -> ProfileViewController {
-        let viewModel = ProfileViewViewModel()
+    func makeProfileScreen(with person: Person, coordinator: PeopleCoordinator) -> ProfileViewController {
+        let viewModel = ProfileViewViewModel(person: person, coordinator: coordinator)
         let viewController = ProfileViewController(viewModel: viewModel)
         return viewController
     }
@@ -86,9 +85,7 @@ final class ScreenFactoryImpl: ScreenFactory {
     func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController {
         let application = UIApplication.shared
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let phoneNumberFormatted = phoneNumber.formatToPhoneNumber()
-
-        let callPhoneButton = UIAlertAction(title: "\(phoneNumberFormatted)", style: .default) { _ in
+        let callPhoneButton = UIAlertAction(title: "\(phoneNumber)", style: .default) { _ in
             let cleanedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
             if let phoneCallURL = URL(string: "tel://+7\(cleanedPhoneNumber)"),
                application.canOpenURL(phoneCallURL) {

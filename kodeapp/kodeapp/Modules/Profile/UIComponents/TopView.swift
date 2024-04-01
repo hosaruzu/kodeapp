@@ -24,7 +24,6 @@ final class TopView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
         setupLayout()
     }
 
@@ -34,11 +33,14 @@ final class TopView: UIView {
 
     // MARK: - Public
 
-    func setup() {
-        personImageView.image = .imagePlaceholder
-        personNameLabel.text = "Person name"
-        personTagLabel.text = "Tag"
-        personRoleLabel.text = "Role"
+    func setup(with id: String, name: String, tag: String, position: String  ) {
+        personNameLabel.text = name
+        personTagLabel.text = tag
+        personRoleLabel.text = position
+
+        Task {
+           await personImageView.setImage(id, size: .big)
+        }
     }
 
     // MARK: - UI constants

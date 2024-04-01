@@ -55,16 +55,15 @@ final class ProfileTableViewCell: UITableViewCell {
     // MARK: - Public
 
     func setup(type: CellType, title: String, subtitle: String? = nil) {
+        titleLabel.text = title
         switch type {
         case .birthDay:
             iconImageView.image = UIImage(resource: .favoriteIcon)
-            titleLabel.text = title
             subtitleLabel.text = subtitle
             selectionStyle = .none
             isUserInteractionEnabled = false
         case .phone:
             iconImageView.image = UIImage(resource: .phoneIcon)
-            titleLabel.text = title.formatToPhoneNumber()
         }
     }
 }

@@ -26,7 +26,7 @@ final class PeopleViewViewModel {
     // MARK: - Dependecies
 
     private let networkService: PeopleNetworkService
-    private weak var coordinator: PeopleCoordinator?
+    private let coordinator: PeopleCoordinator
 
     // MARK: - Init
 
@@ -58,8 +58,8 @@ final class PeopleViewViewModel {
         fetchPeople()
     }
 
-    func onCellTap() {
-        showPersonScreen()
+    func onCellTap(with person: Person) {
+        showPersonScreen(with: person)
     }
 
     // MARK: - Fetch people
@@ -81,7 +81,7 @@ final class PeopleViewViewModel {
 
     // MARK: - Coordinator flow
 
-    private func showPersonScreen() {
-        coordinator?.showPerson()
+    private func showPersonScreen(with person: Person) {
+        coordinator.showPerson(with: person)
     }
 }

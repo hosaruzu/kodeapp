@@ -42,13 +42,12 @@ final class PeopleCoordinator: BaseCoordinator {
         router.setRootModule(peopleScreen)
     }
 
-    func showPerson() {
-        let profileScreen = screenFactory.makeProfileScreen()
-        profileScreen.onPhoneCellTap = { [weak self] phone in self?.presentAC(phone: phone) }
+    func showPerson(with person: Person) {
+        let profileScreen = screenFactory.makeProfileScreen(with: person, coordinator: self)
         router.push(profileScreen)
     }
 
-    private func presentAC(phone: String) {
+    func presentAC(phone: String) {
         let phoneAlertController = screenFactory.makeCallPhoneAlert(with: phone)
         router.present(phoneAlertController, animated: true)
     }

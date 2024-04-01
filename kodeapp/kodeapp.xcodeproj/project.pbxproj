@@ -37,6 +37,8 @@
 		0C69C3DC2BB6DF33007BA969 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3DB2BB6DF33007BA969 /* ImageLoader.swift */; };
 		0C69C3DE2BBADE32007BA969 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3DD2BBADE32007BA969 /* UIImageView+Ext.swift */; };
 		0C69C3E02BBAE6E6007BA969 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3DF2BBAE6E6007BA969 /* LoaderView.swift */; };
+		0C69C3E22BBAEE4A007BA969 /* ProfileTableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3E12BBAEE4A007BA969 /* ProfileTableViewViewModel.swift */; };
+		0C69C3E42BBB0626007BA969 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C69C3E32BBB0626007BA969 /* String+Ext.swift */; };
 		0CA5AF902BAC6AF80022BE5D /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AF8F2BAC6AF80022BE5D /* Avatar.swift */; };
 		0CA5AF922BAC6C860022BE5D /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AF912BAC6C860022BE5D /* Title.swift */; };
 		0CA5AF942BAC6ECB0022BE5D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AF932BAC6ECB0022BE5D /* AppConstants.swift */; };
@@ -105,6 +107,8 @@
 		0C69C3DB2BB6DF33007BA969 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		0C69C3DD2BBADE32007BA969 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		0C69C3DF2BBAE6E6007BA969 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		0C69C3E12BBAEE4A007BA969 /* ProfileTableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewViewModel.swift; sourceTree = "<group>"; };
+		0C69C3E32BBB0626007BA969 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		0CA5AF8F2BAC6AF80022BE5D /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		0CA5AF912BAC6C860022BE5D /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		0CA5AF932BAC6ECB0022BE5D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -236,7 +240,6 @@
 		0C35D5B82BA1E1A600F46EA4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0C35D5BB2BA1E1C100F46EA4 /* Favorites */,
 				0C35D5BA2BA1E1B800F46EA4 /* Profile */,
 				0C35D5B92BA1E1B000F46EA4 /* People */,
 			);
@@ -262,13 +265,6 @@
 				0C5C77922BA9D6B7009833FC /* ProfileViewViewModel.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		0C35D5BB2BA1E1C100F46EA4 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 		0C35D5BC2BA1E1D400F46EA4 /* Network */ = {
@@ -332,6 +328,7 @@
 				0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */,
 				0CA5AF952BADB5660022BE5D /* UILabel+Formatter.swift */,
 				0C69C3DD2BBADE32007BA969 /* UIImageView+Ext.swift */,
+				0C69C3E32BBB0626007BA969 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -412,6 +409,7 @@
 			children = (
 				0C5C77992BAB459D009833FC /* Cell */,
 				0C5C77962BAB42C6009833FC /* ProfileTableView.swift */,
+				0C69C3E12BBAEE4A007BA969 /* ProfileTableViewViewModel.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -622,12 +620,14 @@
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C5C77912BA9D6AB009833FC /* ProfileViewController.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
+				0C69C3E22BBAEE4A007BA969 /* ProfileTableViewViewModel.swift in Sources */,
 				0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */,
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
 				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0CA5AF9D2BB15F260022BE5D /* Person.swift in Sources */,
+				0C69C3E42BBB0626007BA969 /* String+Ext.swift in Sources */,
 				0CA5AFA12BB160940022BE5D /* HTTPMethod.swift in Sources */,
 				0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */,
 				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
