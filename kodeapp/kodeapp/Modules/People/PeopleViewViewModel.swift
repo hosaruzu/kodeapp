@@ -52,8 +52,6 @@ final class PeopleViewViewModel {
         return cellViewModels[indexPath.row]
     }
 
-    var avatarData: Data?
-
     func onRefresh() {
         fetchPeople()
     }
