@@ -11,25 +11,18 @@ final class Avatar: UIImageView {
 
     // MARK: - Init
 
-    init(_ image: UIImage = .imagePlaceholder) {
+    init() {
         super.init(frame: .zero)
-        setImage(image)
-        setup()
+        contentMode = .scaleAspectFit
+        clipsToBounds = true
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Setup
-
-    private func setup() {
-        contentMode = .scaleAspectFit
-    }
-
-    // MARK: - Public
-
-    func setImage(_ image: UIImage) {
-        self.image = image
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.cornerRadius = self.frame.width / 2
     }
 }

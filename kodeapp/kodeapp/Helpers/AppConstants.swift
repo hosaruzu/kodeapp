@@ -20,7 +20,8 @@ enum AppConstants {
         static let textTertiary = UIColor.tertiaryLabel
     }
 
-    enum Font {
-
+    enum ImageSize: String {
+        case small = "60x60"
+        case big = "120x120"
     }
 }

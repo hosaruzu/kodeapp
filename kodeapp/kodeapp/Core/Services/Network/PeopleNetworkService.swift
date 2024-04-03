@@ -10,7 +10,6 @@ import Foundation
 protocol PeopleNetworkService {
 
     func getPeopleList() async throws -> PeopleResponse
-    func getAvatarData(_ id: String) async throws -> Data
 }
 
 final class PeopleNetworkServiceImpl: PeopleNetworkService {
@@ -33,10 +32,5 @@ final class PeopleNetworkServiceImpl: PeopleNetworkService {
         let request = try request.build(endpoint: PeopleEndpoint.people)
         let data = try await networkClient.send(request)
         return try decoder.decode(PeopleResponse.self, from: data)
-    }
-
-    func getAvatarData(_ id: String) async throws -> Data {
-        let request = try request.build(endpoint: PeopleEndpoint.avatar(id: id))
-        return try await networkClient.send(request)
     }
 }

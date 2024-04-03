@@ -9,7 +9,7 @@ import Foundation
 
 enum PeopleEndpoint {
     case people
-    case avatar(id: String)
+    case avatar(id: String, size: AppConstants.ImageSize)
 }
 
 extension PeopleEndpoint: Endpoint {
@@ -27,8 +27,21 @@ extension PeopleEndpoint: Endpoint {
         switch self {
         case .people:
             return "/mocks/kode-education/trainee-test/25143926/users"
-        case .avatar(let id):
+        case .avatar(let id, _):
             return "/\(id)"
+
+        }
+    }
+
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .people:
+           return []
+        case .avatar(_, let size):
+            return [
+                URLQueryItem(name: "bgset", value: "bg2"),
+                URLQueryItem(name: "size", value: size.rawValue)
+            ]
         }
     }
 
@@ -37,6 +50,7 @@ extension PeopleEndpoint: Endpoint {
         components.scheme = scheme
         components.host = host
         components.path = path
+        components.queryItems = queryItems
         guard let url = components.url else { return nil }
         return url
     }

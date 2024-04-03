@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func configureNavigationBarAppearance() {
-        UINavigationBar.appearance().tintColor = .black
+        UINavigationBar.appearance().tintColor = .label
         UINavigationBar.appearance().backIndicatorImage = UIImage(resource: .backIcon)
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(resource: .backIcon)
         UIBarButtonItem.appearance()

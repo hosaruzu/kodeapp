@@ -12,20 +12,24 @@ final class PeopleTableView: UIView {
     // MARK: - Callbacks
 
     var onRefresh: (() -> Void)?
-    var onCellTap: (() -> Void)?
+    var onCellTap: ((Person) -> Void)?
+
+    // MARK: - Skeleton loading toggle
+
+    private var isLoading = true {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     // MARK: - Subviews
 
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
 
-    // MARK: - DEBUG
+    // MARK: - View model
 
-     private var data: [PersonTableViewCellViewModel] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var viewModel: PeopleViewViewModel?
 
     // MARK: - Init
 
@@ -46,6 +50,11 @@ final class PeopleTableView: UIView {
     func endRefreshing() {
         refreshControl.endRefreshing()
     }
+
+    func configure(with viewModel: PeopleViewViewModel?) {
+        self.viewModel = viewModel
+        isLoading = false
+    }
 }
 
 // MARK: - Setup TableView
@@ -57,6 +66,7 @@ private extension PeopleTableView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PersonTableViewCell.self)
+        tableView.register(SkeletonCell.self)
     }
 }
 
@@ -89,7 +99,9 @@ private extension PeopleTableView {
 
     @objc
     func onRefresh(_ sender: UIRefreshControl) {
+        isLoading = true
         onRefresh?()
+        endRefreshing()
     }
 }
 
@@ -97,17 +109,30 @@ private extension PeopleTableView {
 
 extension PeopleTableView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        isLoading ? 9 : viewModel?.itemsCount ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
-        cell.setup(with: data[indexPath.row])
-        return cell
+        if isLoading {
+            let cell = tableView.dequeue(SkeletonCell.self, for: indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
+            guard let viewModel = viewModel?.cellViewModelFor(indexPath) else { fatalError("No view model") }
+            cell.setup(with: viewModel)
+            return cell
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        onCellTap?()
+        if let person = viewModel?.itemFor(indexPath),
+           !isLoading {
+            onCellTap?(person)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        84
     }
 }

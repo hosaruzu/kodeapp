@@ -10,17 +10,13 @@ import UIKit
 final class PeopleViewController: UIViewController {
 
     // MARK: - Subviews
+
     private let headerSearchBar = SearchBar()
     private let tableView = PeopleTableView()
-    private let loader = Loader()
 
     // MARK: - View model
 
-    private let viewModel: PeopleViewViewModel
-
-    // MARK: - DEBUG
-
-    var onCellTap: (() -> Void)?
+    private var viewModel: PeopleViewViewModel
 
     // MARK: - Init
 
@@ -41,10 +37,7 @@ final class PeopleViewController: UIViewController {
         setupSearchBar()
         addSubviews()
         setupLayout()
-        showLoader()
-        tableView.onCellTap = { [weak self] in
-            self?.onCellTap?()
-        }
+        setupBindings()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,13 +45,30 @@ final class PeopleViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 
+    // MARK: - Setup bindings
+
+    private func setupBindings() {
+        viewModel.onLoad = { [weak self] in
+            self?.display(with: self?.viewModel)
+        }
+
+        tableView.onRefresh = { [weak self] in
+            self?.viewModel.onRefresh()
+        }
+
+        tableView.onCellTap = { [weak self] person in
+            self?.viewModel.onCellTap(with: person)
+        }
+    }
+
+    private func display(with viewModel: PeopleViewViewModel?) {
+        tableView.configure(with: self.viewModel)
+    }
+
     // MARK: - UI constants
 
     private enum UIConstants {
         static let searchBarHorizontalOffset: CGFloat = 16
-
-        static let loaderWidth: CGFloat = 100
-        static let loaderHeight: CGFloat = 100
     }
 }
 
@@ -78,7 +88,6 @@ private extension PeopleViewController {
     func addSubviews() {
         view.addSubviews([
             headerSearchBar,
-            loader,
             tableView
         ])
     }
@@ -100,33 +109,12 @@ private extension PeopleViewController {
             tableView.topAnchor.constraint(equalTo: headerSearchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            loader.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loader.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loader.widthAnchor.constraint(equalToConstant: UIConstants.loaderWidth),
-            loader.heightAnchor.constraint(equalToConstant: UIConstants.loaderHeight)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
     }
 }
 
-// MARK: - Loader lifecycle
-
-private extension PeopleViewController {
-
-    func showLoader() {
-        loader.isHidden = false
-        loader.start()
-        view.bringSubviewToFront(loader)
-    }
-
-    func hideLoader() {
-        loader.isHidden = true
-        loader.stop()
-        view.sendSubviewToBack(loader)
-    }
-}
 // MARK: - UISearchBarDelegate
 
 extension PeopleViewController: UISearchBarDelegate {
