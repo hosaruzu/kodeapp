@@ -18,6 +18,9 @@ extension ReuseIdentrifiable {
 }
 
 extension UITableViewCell: ReuseIdentrifiable {}
+extension UICollectionViewCell: ReuseIdentrifiable {}
+
+// MARK: - UITableView + ReuseIdentrifiable
 
 extension UITableView {
     func dequeue<T: UITableViewCell>(
@@ -34,5 +37,25 @@ extension UITableView {
 
     func register<T: UITableViewCell>(_ cellType: T.Type) {
         register(cellType, forCellReuseIdentifier: cellType.reuseIdentifier)
+    }
+}
+
+// MARK: - UICollectionView + ReuseIdentrifiable
+
+extension UICollectionView {
+    func dequeue<T: UICollectionViewCell>(
+        _ cellType: T.Type,
+        for indexPath: IndexPath
+    ) -> T {
+        guard let cell = dequeueReusableCell(
+            withReuseIdentifier: cellType.reuseIdentifier,
+            for: indexPath) as? T else {
+            fatalError("Can't dequeue \(cellType.self) as \(self) cell")
+        }
+        return cell
+    }
+
+    func register<T: UICollectionViewCell>(_ cellType: T.Type) {
+        register(cellType, forCellWithReuseIdentifier: cellType.reuseIdentifier)
     }
 }

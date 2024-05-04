@@ -5,9 +5,11 @@
 //  Created by Artem Tebenkov on 01.04.2024.
 //
 
-import Foundation
+import UIKit
 
 extension String {
+
+    // MARK: - Dates
 
     func convertDate(inputDate: String) -> String? {
         let dateFormatterInput = DateFormatter()
@@ -31,5 +33,13 @@ extension String {
         } else {
             return nil
         }
+    }
+
+    // MARK: - Define Width
+
+    func defineWidth() -> CGFloat {
+        let font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        let attributes = [NSAttributedString.Key.font: font]
+        return self.size(withAttributes: attributes).width
     }
 }

@@ -12,6 +12,7 @@ final class PeopleViewController: UIViewController {
     // MARK: - Subviews
 
     private let headerSearchBar = SearchBar()
+    private let menuView = MenuView()
     private let tableView = PeopleTableView()
 
     // MARK: - View model
@@ -88,6 +89,7 @@ private extension PeopleViewController {
     func addSubviews() {
         view.addSubviews([
             headerSearchBar,
+            menuView,
             tableView
         ])
     }
@@ -106,7 +108,12 @@ private extension PeopleViewController {
                 constant: -UIConstants.searchBarHorizontalOffset
             ),
 
-            tableView.topAnchor.constraint(equalTo: headerSearchBar.bottomAnchor),
+            menuView.topAnchor.constraint(equalTo: headerSearchBar.bottomAnchor, constant: 6),
+            menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            menuView.heightAnchor.constraint(equalToConstant: 44),
+
+            tableView.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

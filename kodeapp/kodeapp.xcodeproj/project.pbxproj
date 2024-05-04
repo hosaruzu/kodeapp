@@ -56,6 +56,10 @@
 		0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */; };
 		0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */; };
 		0CA5AFB02BB1CAC00022BE5D /* NetworkCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */; };
+		0CBCFCDE2BE671C700307671 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCDB2BE671C700307671 /* Categories.swift */; };
+		0CBCFCE02BE672FA00307671 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCDF2BE672FA00307671 /* MenuView.swift */; };
+		0CBCFCE22BE6732100307671 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */; };
+		0CBCFCE42BE6736700307671 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +133,10 @@
 		0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworkService.swift; sourceTree = "<group>"; };
 		0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheService.swift; sourceTree = "<group>"; };
+		0CBCFCDB2BE671C700307671 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		0CBCFCDF2BE672FA00307671 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
+		0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +376,7 @@
 		0C35D5E02BA5F40600F46EA4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				0CBCFCD82BE671C700307671 /* Menu */,
 				0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */,
 				0C35D5DE2BA5F12100F46EA4 /* Loader.swift */,
 			);
@@ -453,6 +462,49 @@
 				0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		0CBCFCD82BE671C700307671 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0CBCFCDA2BE671C700307671 /* Categories */,
+				0CBCFCD92BE671C700307671 /* Extensions */,
+				0CBCFCDC2BE671C700307671 /* View */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		0CBCFCD92BE671C700307671 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CBCFCDA2BE671C700307671 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0CBCFCDB2BE671C700307671 /* Categories.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		0CBCFCDC2BE671C700307671 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CBCFCDD2BE671C700307671 /* Cell */,
+				0CBCFCDF2BE672FA00307671 /* MenuView.swift */,
+				0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0CBCFCDD2BE671C700307671 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,13 +680,16 @@
 				0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C5C77912BA9D6AB009833FC /* ProfileViewController.swift in Sources */,
+				0CBCFCDE2BE671C700307671 /* Categories.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0C69C3E22BBAEE4A007BA969 /* ProfileTableViewViewModel.swift in Sources */,
 				0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */,
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
 				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
+				0CBCFCE02BE672FA00307671 /* MenuView.swift in Sources */,
 				0C69C3E62BBC2556007BA969 /* SkeletonCell.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
+				0CBCFCE22BE6732100307671 /* MenuCollectionView.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0CA5AF9D2BB15F260022BE5D /* Person.swift in Sources */,
 				0C69C3E42BBB0626007BA969 /* String+Ext.swift in Sources */,
@@ -643,6 +698,7 @@
 				0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */,
 				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
 				0C69C3DC2BB6DF33007BA969 /* ImageLoader.swift in Sources */,
+				0CBCFCE42BE6736700307671 /* MenuCollectionViewCell.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
 				0CA5AF922BAC6C860022BE5D /* Title.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
