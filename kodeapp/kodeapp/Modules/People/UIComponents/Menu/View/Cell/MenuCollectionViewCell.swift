@@ -19,11 +19,22 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    private let indicator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .accent
+        view.isHidden = true
+        return view
+    }()
+
+    private var widthConstraint = NSLayoutConstraint()
+    var leadingConstraint = NSLayoutConstraint()
+
     // MARK: - Properties
 
     override var isSelected: Bool {
         didSet {
             categoryNameLabel.textColor = isSelected ? .label : .secondaryLabel
+            indicator.isHidden = !isSelected
         }
     }
 
@@ -50,10 +61,15 @@ final class MenuCollectionViewCell: UICollectionViewCell {
 private extension MenuCollectionViewCell {
 
     func setupSubviews() {
-        contentView.addSubviews([categoryNameLabel])
+        contentView.addSubviews([categoryNameLabel, indicator])
         NSLayoutConstraint.activate([
             categoryNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            categoryNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            categoryNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+
+            indicator.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            indicator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            indicator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            indicator.heightAnchor.constraint(equalToConstant: 2)
         ])
     }
 }

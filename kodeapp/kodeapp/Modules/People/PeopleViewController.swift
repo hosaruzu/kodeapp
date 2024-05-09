@@ -13,7 +13,7 @@ final class PeopleViewController: UIViewController {
 
     private let headerSearchBar = SearchBar()
     private let menuView = MenuView()
-    private let tableView = PeopleTableView()
+    private let sliderView = SliderView()
 
     // MARK: - View model
 
@@ -49,21 +49,29 @@ final class PeopleViewController: UIViewController {
     // MARK: - Setup bindings
 
     private func setupBindings() {
+        sliderView.onEndDragging = { [weak self] item in
+            self?.menuView.selectItem(at: item)
+        }
+
+        menuView.onSectionChange = { [weak self] row in
+            self?.sliderView.scrollToItem(at: row)
+        }
+
         viewModel.onLoad = { [weak self] in
             self?.display(with: self?.viewModel)
         }
 
-        tableView.onRefresh = { [weak self] in
+        sliderView.onRefresh = { [weak self] in
             self?.viewModel.onRefresh()
         }
 
-        tableView.onCellTap = { [weak self] person in
+        sliderView.onCellTap = { [weak self] person in
             self?.viewModel.onCellTap(with: person)
         }
     }
 
     private func display(with viewModel: PeopleViewViewModel?) {
-        tableView.configure(with: self.viewModel)
+        sliderView.configure(with: viewModel)
     }
 
     // MARK: - UI constants
@@ -90,7 +98,7 @@ private extension PeopleViewController {
         view.addSubviews([
             headerSearchBar,
             menuView,
-            tableView
+            sliderView
         ])
     }
 
@@ -113,10 +121,10 @@ private extension PeopleViewController {
             menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             menuView.heightAnchor.constraint(equalToConstant: 44),
 
-            tableView.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 16),
+            sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            sliderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
     }

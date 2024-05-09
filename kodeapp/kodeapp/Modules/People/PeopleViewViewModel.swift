@@ -39,6 +39,9 @@ final class PeopleViewViewModel {
     private var cellViewModels: [PersonTableViewCellViewModel] = []
 
     // MARK: - Public
+    var isLoaded: Bool {
+        !people.isEmpty
+    }
 
     var itemsCount: Int {
         people.count
@@ -69,6 +72,8 @@ final class PeopleViewViewModel {
     @MainActor
     private func fetchPeople() async {
         do {
+            people = []
+            try? await Task.sleep(nanoseconds: 5 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
             onLoad?()

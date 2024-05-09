@@ -7,17 +7,19 @@
 
 import UIKit
 
-protocol MenuMovable: AnyObject {
-    func move(originX: CGFloat, width: CGFloat)
+protocol SectionChangable: AnyObject {
+    func moveTo(_ section: Int)
 }
 
 final class MenuCollectionView: UICollectionView {
 
+    var onSectionChange: ((Int) -> Void)?
+
     private let flowLayout = UICollectionViewFlowLayout()
 
-    // MARK: - MenuMovable
+    // MARK: - SectionChangable
 
-    weak var movableDelegate: MenuMovable?
+    weak var sectionChangable: SectionChangable?
 
     // MARK: - Init
 
@@ -47,7 +49,6 @@ private extension MenuCollectionView {
         backgroundColor = .none
         bounces = false
         showsHorizontalScrollIndicator = false
-        isScrollEnabled = false
         selectItem(at: [0, 0], animated: false, scrollPosition: [])
     }
 
@@ -77,27 +78,13 @@ extension MenuCollectionView: UICollectionViewDataSource {
 
 extension MenuCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        UIView.animate(withDuration: 0.4) {
-            self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        }
-        guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else { return }
-        let cellRect = attributes.frame
-        let cellFrameInSuperView = collectionView.convert(cellRect, to: collectionView.superview)
-        movableDelegate?.move(originX: cellFrameInSuperView.origin.x, width: cellFrameInSuperView.width)
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        willDisplay cell: UICollectionViewCell,
-        forItemAt indexPath: IndexPath
-    ) {
-        MenuCollectionViewCell.performWithoutAnimation {
-            cell.layoutIfNeeded()
-        }
+        self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        onSectionChange?(indexPath.row)
+        self.sectionChangable?.moveTo(indexPath.row)
     }
 }
 
-// MARK: -
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension MenuCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(

@@ -18,7 +18,7 @@ enum Categories: String, CaseIterable {
     case qa = "QA"
     case frontend = "Frontend"
     case hr = "HR"
-    case analysts = "Analysts"
+    case analytics = "Analytics"
     case pr = "PR"
     case backend = "Backend"
     case support = "Support"

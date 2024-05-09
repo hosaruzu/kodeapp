@@ -56,10 +56,12 @@
 		0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */; };
 		0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */; };
 		0CA5AFB02BB1CAC00022BE5D /* NetworkCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */; };
-		0CBCFCDE2BE671C700307671 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCDB2BE671C700307671 /* Categories.swift */; };
-		0CBCFCE02BE672FA00307671 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCDF2BE672FA00307671 /* MenuView.swift */; };
-		0CBCFCE22BE6732100307671 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */; };
-		0CBCFCE42BE6736700307671 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */; };
+		0CDBB45A2BEC7B21003EBEFF /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB44D2BEC7B21003EBEFF /* CategoryCell.swift */; };
+		0CDBB45B2BEC7B21003EBEFF /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB44F2BEC7B21003EBEFF /* SliderView.swift */; };
+		0CDBB45C2BEC7B21003EBEFF /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4512BEC7B21003EBEFF /* Categories.swift */; };
+		0CDBB45D2BEC7B21003EBEFF /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4542BEC7B21003EBEFF /* MenuCollectionViewCell.swift */; };
+		0CDBB45E2BEC7B21003EBEFF /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4562BEC7B21003EBEFF /* MenuCollectionView.swift */; };
+		0CDBB45F2BEC7B21003EBEFF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4572BEC7B21003EBEFF /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,10 +135,12 @@
 		0CA5AFAB2BB165180022BE5D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworkService.swift; sourceTree = "<group>"; };
 		0CA5AFAF2BB1CAC00022BE5D /* NetworkCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheService.swift; sourceTree = "<group>"; };
-		0CBCFCDB2BE671C700307671 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
-		0CBCFCDF2BE672FA00307671 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
-		0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CDBB44D2BEC7B21003EBEFF /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		0CDBB44F2BEC7B21003EBEFF /* SliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		0CDBB4512BEC7B21003EBEFF /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		0CDBB4542BEC7B21003EBEFF /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		0CDBB4562BEC7B21003EBEFF /* MenuCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
+		0CDBB4572BEC7B21003EBEFF /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,7 +380,8 @@
 		0C35D5E02BA5F40600F46EA4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				0CBCFCD82BE671C700307671 /* Menu */,
+				0CDBB4592BEC7B21003EBEFF /* Menu */,
+				0CDBB4502BEC7B21003EBEFF /* Slider */,
 				0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */,
 				0C35D5DE2BA5F12100F46EA4 /* Loader.swift */,
 			);
@@ -464,47 +469,64 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		0CBCFCD82BE671C700307671 /* Menu */ = {
+		0CDBB44E2BEC7B21003EBEFF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0CBCFCDA2BE671C700307671 /* Categories */,
-				0CBCFCD92BE671C700307671 /* Extensions */,
-				0CBCFCDC2BE671C700307671 /* View */,
+				0CDBB44D2BEC7B21003EBEFF /* CategoryCell.swift */,
 			);
-			path = Menu;
+			path = Cell;
 			sourceTree = "<group>";
 		};
-		0CBCFCD92BE671C700307671 /* Extensions */ = {
+		0CDBB4502BEC7B21003EBEFF /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				0CDBB44E2BEC7B21003EBEFF /* Cell */,
+				0CDBB44F2BEC7B21003EBEFF /* SliderView.swift */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
+		0CDBB4522BEC7B21003EBEFF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0CDBB4512BEC7B21003EBEFF /* Categories.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		0CDBB4532BEC7B21003EBEFF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0CBCFCDA2BE671C700307671 /* Categories */ = {
+		0CDBB4552BEC7B21003EBEFF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0CBCFCDB2BE671C700307671 /* Categories.swift */,
+				0CDBB4542BEC7B21003EBEFF /* MenuCollectionViewCell.swift */,
 			);
-			path = Categories;
+			path = Cell;
 			sourceTree = "<group>";
 		};
-		0CBCFCDC2BE671C700307671 /* View */ = {
+		0CDBB4582BEC7B21003EBEFF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0CBCFCDD2BE671C700307671 /* Cell */,
-				0CBCFCDF2BE672FA00307671 /* MenuView.swift */,
-				0CBCFCE12BE6732100307671 /* MenuCollectionView.swift */,
+				0CDBB4552BEC7B21003EBEFF /* Cell */,
+				0CDBB4562BEC7B21003EBEFF /* MenuCollectionView.swift */,
+				0CDBB4572BEC7B21003EBEFF /* MenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		0CBCFCDD2BE671C700307671 /* Cell */ = {
+		0CDBB4592BEC7B21003EBEFF /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				0CBCFCE32BE6736700307671 /* MenuCollectionViewCell.swift */,
+				0CDBB4522BEC7B21003EBEFF /* Categories */,
+				0CDBB4532BEC7B21003EBEFF /* Extensions */,
+				0CDBB4582BEC7B21003EBEFF /* View */,
 			);
-			path = Cell;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,32 +699,34 @@
 				0CA5AF902BAC6AF80022BE5D /* Avatar.swift in Sources */,
 				0C5C778C2BA9C7DB009833FC /* AppCoordinator.swift in Sources */,
 				0C5C77952BAB1E30009833FC /* TopView.swift in Sources */,
+				0CDBB45A2BEC7B21003EBEFF /* CategoryCell.swift in Sources */,
 				0CA5AFAA2BB1642B0022BE5D /* NetworkDecoder.swift in Sources */,
 				0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */,
 				0C5C77912BA9D6AB009833FC /* ProfileViewController.swift in Sources */,
-				0CBCFCDE2BE671C700307671 /* Categories.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0C69C3E22BBAEE4A007BA969 /* ProfileTableViewViewModel.swift in Sources */,
 				0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */,
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
 				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
-				0CBCFCE02BE672FA00307671 /* MenuView.swift in Sources */,
 				0C69C3E62BBC2556007BA969 /* SkeletonCell.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
-				0CBCFCE22BE6732100307671 /* MenuCollectionView.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
 				0CA5AF9D2BB15F260022BE5D /* Person.swift in Sources */,
 				0C69C3E42BBB0626007BA969 /* String+Ext.swift in Sources */,
 				0CA5AFA12BB160940022BE5D /* HTTPMethod.swift in Sources */,
 				0C69C3E82BBC2DE6007BA969 /* SkeletonLoadable.swift in Sources */,
 				0CA5AFAC2BB165180022BE5D /* NetworkClient.swift in Sources */,
+				0CDBB45B2BEC7B21003EBEFF /* SliderView.swift in Sources */,
 				0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */,
 				0C69C3DC2BB6DF33007BA969 /* ImageLoader.swift in Sources */,
-				0CBCFCE42BE6736700307671 /* MenuCollectionViewCell.swift in Sources */,
 				0C35D5C92BA1E39000F46EA4 /* PeopleViewController.swift in Sources */,
+				0CDBB45F2BEC7B21003EBEFF /* MenuView.swift in Sources */,
+				0CDBB45D2BEC7B21003EBEFF /* MenuCollectionViewCell.swift in Sources */,
+				0CDBB45C2BEC7B21003EBEFF /* Categories.swift in Sources */,
 				0CA5AF922BAC6C860022BE5D /* Title.swift in Sources */,
 				0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */,
 				0C5C778E2BA9C828009833FC /* PeopleCoordinator.swift in Sources */,
+				0CDBB45E2BEC7B21003EBEFF /* MenuCollectionView.swift in Sources */,
 				0CA5AF942BAC6ECB0022BE5D /* AppConstants.swift in Sources */,
 				0C69C3EA2BBC2E08007BA969 /* UIColor+Ext.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
