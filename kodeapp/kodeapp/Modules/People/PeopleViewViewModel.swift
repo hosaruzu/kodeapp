@@ -17,9 +17,13 @@ final class PeopleViewViewModel {
 
     private var people: [Person] = [] {
         didSet {
-            people.forEach { person in
-                cellViewModels.append(PersonTableViewCellViewModel(person: person))
-            }
+            categorizedPeople = .init(grouping: people, by: { $0.department })
+        }
+    }
+
+    private var categorizedPeople: [String: [Person]] = [:] {
+        didSet {
+            onLoad?()
         }
     }
 
@@ -36,23 +40,14 @@ final class PeopleViewViewModel {
         fetchPeople()
     }
 
-    private var cellViewModels: [PersonTableViewCellViewModel] = []
-
     // MARK: - Public
-    var isLoaded: Bool {
-        !people.isEmpty
-    }
 
-    var itemsCount: Int {
-        people.count
+    var isLoaded: Bool {
+        !categorizedPeople.isEmpty
     }
 
     func itemFor(_ indexPath: IndexPath) -> Person {
         return people[indexPath.row]
-    }
-
-    func cellViewModelFor(_ indexPath: IndexPath) -> PersonTableViewCellViewModel {
-        return cellViewModels[indexPath.row]
     }
 
     func onRefresh() {
@@ -61,6 +56,31 @@ final class PeopleViewViewModel {
 
     func onCellTap(with person: Person) {
         showPersonScreen(with: person)
+    }
+
+    func itemFor(_ indexPath: IndexPath, category: Categories) -> Person? {
+        let person = categorizedPeople[category.rawValue]?[indexPath.row]
+        return person
+    }
+
+    func itemCount(for category: Categories) -> Int? {
+        if category == .all {
+            return people.count
+        } else {
+            return categorizedPeople[category.rawValue]?.count
+        }
+    }
+
+    func cellViewModelFor(_ indexPath: IndexPath, category: Categories) -> PersonTableViewCellViewModel? {
+        if category == .all {
+            let person = people[indexPath.row]
+            return .init(person: person)
+        } else {
+            if let person = categorizedPeople[category.rawValue]?[indexPath.row] {
+                return .init(person: person)
+            }
+        }
+        return nil
     }
 
     // MARK: - Fetch people
@@ -72,11 +92,9 @@ final class PeopleViewViewModel {
     @MainActor
     private func fetchPeople() async {
         do {
-            people = []
-            try? await Task.sleep(nanoseconds: 5 * NSEC_PER_SEC)
+            try? await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
-            onLoad?()
         } catch {
             print("Error: \(error.localizedDescription)")
         }

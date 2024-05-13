@@ -39,6 +39,8 @@ final class CategoryCell: UICollectionViewCell {
         }
     }
 
+    private var category: Categories = .all
+
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -55,8 +57,10 @@ final class CategoryCell: UICollectionViewCell {
 
     // MARK: - Public
 
-    func configure(with viewModel: PeopleViewViewModel?) {
+    func configure(with viewModel: PeopleViewViewModel?, category: Categories) {
         self.viewModel = viewModel
+        self.category = category
+        tableView.reloadData()
     }
 }
 
@@ -65,6 +69,7 @@ final class CategoryCell: UICollectionViewCell {
 private extension CategoryCell {
 
     func setupTableViewDelegatesAndRegistration() {
+        tableView.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -102,7 +107,6 @@ private extension CategoryCell {
 
     @objc
     func onRefresh(_ sender: UIRefreshControl) {
-        tableView.reloadData()
         isLoading = true
         onRefresh?()
     }
@@ -112,7 +116,7 @@ private extension CategoryCell {
 
 extension CategoryCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isLoading ? 9 : viewModel?.itemsCount ?? 0
+        return isLoading ? 9 : viewModel?.itemCount(for: category) ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,9 +124,11 @@ extension CategoryCell: UITableViewDataSource {
             let cell = tableView.dequeue(SkeletonCell.self, for: indexPath)
             return cell
         } else {
+            guard let cellViewModel = viewModel?.cellViewModelFor(indexPath, category: category) else {
+                fatalError("Can't make cellViewModel")
+            }
             let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
-            guard let viewModel = viewModel?.cellViewModelFor(indexPath) else { fatalError("No view model") }
-            cell.setup(with: viewModel)
+            cell.setup(with: cellViewModel)
             return cell
         }
     }
@@ -134,7 +140,7 @@ extension CategoryCell: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let person = viewModel?.itemFor(indexPath),
+        if let person = viewModel?.itemFor(indexPath, category: category),
            !isLoading {
             onCellTap?(person)
         }

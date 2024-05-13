@@ -46,7 +46,7 @@ final class MenuView: UIView {
 // MARK: - Setup collection view
 
 private extension MenuView {
-    
+
     func makeFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -105,7 +105,7 @@ private extension MenuView {
 
 extension MenuView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Categories.allValues.count
+        Categories.allCases.count
     }
 
     func collectionView(
@@ -137,5 +137,13 @@ extension MenuView: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let width = Categories.category(for: indexPath).defineWidth()
         return CGSize(width: width + 24, height: collectionView.frame.height)
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        .init(top: 0, left: 16, bottom: 0, right: 0)
     }
 }

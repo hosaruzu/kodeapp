@@ -121,7 +121,7 @@ private extension PeopleViewController {
             menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             menuView.heightAnchor.constraint(equalToConstant: 44),
 
-            sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 16),
+            sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor),
             sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sliderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

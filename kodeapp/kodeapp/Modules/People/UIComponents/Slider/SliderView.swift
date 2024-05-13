@@ -33,7 +33,7 @@ final class SliderView: UIView {
         setupSubviews()
         setupLayout()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -69,6 +69,7 @@ private extension SliderView {
         guard let collectionView else { return }
         collectionView.isPagingEnabled = true
         collectionView.bounces = false
+        collectionView.showsHorizontalScrollIndicator = false
     }
 
     func setupCollectionViewDelegatesAndRegistrations() {
@@ -76,8 +77,6 @@ private extension SliderView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CategoryCell.self)
-        collectionView.isPagingEnabled = true
-        collectionView.bounces = false
     }
 }
 
@@ -96,7 +95,7 @@ private extension SliderView {
             collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
@@ -106,12 +105,15 @@ private extension SliderView {
 extension SliderView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Categories.allValues.count
+        Categories.allCases.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeue(CategoryCell.self, for: indexPath)
-        cell.configure(with: viewModel)
+        cell.configure(with: viewModel, category: Categories.allCases[indexPath.row])
         cell.onRefresh = onRefresh
         cell.onCellTap = onCellTap
         return cell
@@ -122,7 +124,11 @@ extension SliderView: UICollectionViewDataSource {
 
 extension SliderView: UICollectionViewDelegate {
 
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
         let offset = IndexPath(item: Int(targetContentOffset.pointee.x / frame.width), section: 0)
         onEndDragging?(offset.item)
     }
@@ -132,7 +138,11 @@ extension SliderView: UICollectionViewDelegate {
 
 extension SliderView: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         .init(width: bounds.width, height: frame.height)
     }
 }

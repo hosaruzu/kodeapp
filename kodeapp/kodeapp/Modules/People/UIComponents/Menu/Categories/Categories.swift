@@ -9,29 +9,36 @@ import Foundation
 
 // swiftlint:disable identifier_name
 enum Categories: String, CaseIterable {
-    case all = "All"
-    case android = "Android"
-    case ios = "iOS"
-    case design = "Design"
-    case management = "Management"
-    case backOffice = "Back-office"
-    case qa = "QA"
-    case frontend = "Frontend"
-    case hr = "HR"
-    case analytics = "Analytics"
-    case pr = "PR"
-    case backend = "Backend"
-    case support = "Support"
+    case all
+    case android
+    case ios
+    case design
+    case management
+    case backOffice = "back_office"
+    case qa
+    case frontend
+    case hr
+    case analytics
+    case pr
+    case backend
+    case support
 }
 // swiftlint:enable identifier_name
 
 extension Categories {
 
-    static var allValues: [String] {
-        allCases.map { $0.rawValue }
+    var name: String {
+        switch self {
+        case .ios:
+            "iOS"
+        case .backOffice:
+            "Back office"
+        default:
+            rawValue.capitalized
+        }
     }
 
-    static func category(for indexPath: IndexPath) -> Self.RawValue {
-        Categories.allValues[indexPath.row]
+    static func category(for indexPath: IndexPath) -> String {
+        allCases[indexPath.row].name
     }
 }
