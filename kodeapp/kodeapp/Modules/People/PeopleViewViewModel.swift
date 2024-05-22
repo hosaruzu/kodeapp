@@ -21,6 +21,13 @@ final class PeopleViewViewModel {
         }
     }
 
+    private var filteredPeople: [Person] = [] {
+        didSet {
+            categorizedPeople = .init(grouping: filteredPeople, by: { $0.department })
+            onLoad?()
+        }
+    }
+
     private var categorizedPeople: [String: [Person]] = [:] {
         didSet {
             onLoad?()
@@ -40,15 +47,15 @@ final class PeopleViewViewModel {
         fetchPeople()
     }
 
-    // MARK: - Public
+    // MARK: - Public properties
 
     var isLoaded: Bool {
         !categorizedPeople.isEmpty
     }
 
-    func itemFor(_ indexPath: IndexPath) -> Person {
-        return people[indexPath.row]
-    }
+    var inSearchMode = false
+
+    // MARK: - Public methods
 
     func onRefresh() {
         fetchPeople()
@@ -58,22 +65,38 @@ final class PeopleViewViewModel {
         showPersonScreen(with: person)
     }
 
-    func itemFor(_ indexPath: IndexPath, category: Categories) -> Person? {
-        let person = categorizedPeople[category.rawValue]?[indexPath.row]
-        return person
+    func itemFor(
+        _ indexPath: IndexPath,
+        category: Categories,
+        inSearchMode: Bool = false
+    ) -> Person? {
+        if category == .all {
+            let person =  inSearchMode ? filteredPeople[indexPath.row] : people[indexPath.row]
+            return person
+        } else {
+            let person = categorizedPeople[category.rawValue]?[indexPath.row]
+            return person
+        }
     }
 
-    func itemCount(for category: Categories) -> Int? {
+    func itemsCount(
+        for category: Categories,
+        inSearchMode: Bool = false
+    ) -> Int? {
         if category == .all {
-            return people.count
+            return inSearchMode ? filteredPeople.count : people.count
         } else {
             return categorizedPeople[category.rawValue]?.count
         }
     }
 
-    func cellViewModelFor(_ indexPath: IndexPath, category: Categories) -> PersonTableViewCellViewModel? {
+    func cellViewModelFor(
+        _ indexPath: IndexPath,
+        category: Categories,
+        inSearchMode: Bool = false
+    ) -> PersonTableViewCellViewModel? {
         if category == .all {
-            let person = people[indexPath.row]
+            let person =  inSearchMode ? filteredPeople[indexPath.row] : people[indexPath.row]
             return .init(person: person)
         } else {
             if let person = categorizedPeople[category.rawValue]?[indexPath.row] {
@@ -81,6 +104,20 @@ final class PeopleViewViewModel {
             }
         }
         return nil
+    }
+
+    // MARK: - Search
+
+    func onSearchEvent(_ searchText: String = "") {
+        inSearchMode = !searchText.isEmpty
+        filteredPeople = people
+        guard !searchText.isEmpty else { return }
+        let searchText = searchText.lowercased()
+        filteredPeople = filteredPeople.filter {
+            $0.lastName.lowercased().contains(searchText)
+            || $0.firstName.lowercased().contains(searchText)
+            || $0.userTag.lowercased().contains(searchText)
+        }
     }
 
     // MARK: - Fetch people
