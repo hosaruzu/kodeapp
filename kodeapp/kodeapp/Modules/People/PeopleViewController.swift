@@ -78,6 +78,8 @@ final class PeopleViewController: UIViewController {
 
     private enum UIConstants {
         static let searchBarHorizontalOffset: CGFloat = 16
+        static let menuViewToSearchBarOffet: CGFloat = 6
+        static let menuViewHeight: CGFloat = 44
     }
 }
 
@@ -116,10 +118,13 @@ private extension PeopleViewController {
                 constant: -UIConstants.searchBarHorizontalOffset
             ),
 
-            menuView.topAnchor.constraint(equalTo: headerSearchBar.bottomAnchor, constant: 6),
+            menuView.topAnchor.constraint(
+                equalTo: headerSearchBar.bottomAnchor,
+                constant: UIConstants.menuViewToSearchBarOffet),
             menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            menuView.heightAnchor.constraint(equalToConstant: 44),
+            menuView.heightAnchor.constraint(
+                equalToConstant: UIConstants.menuViewHeight),
 
             sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor),
             sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -147,9 +152,14 @@ extension PeopleViewController: UISearchBarDelegate {
         headerSearchBar.isSearching = false
         headerSearchBar.hideCancelButton()
         headerSearchBar.didEndEditing()
+        viewModel.onSearchEvent()
     }
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         headerSearchBar.isFilterClicked = !headerSearchBar.isFilterClicked
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.onSearchEvent(searchText)
     }
 }

@@ -55,6 +55,18 @@ final class CategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - UI constants
+
+    private enum UIConstants {
+        static let tableViewContentOffset: UIEdgeInsets = .init(
+            top: 16,
+            left: 0,
+            bottom: 0,
+            right: 0)
+        static let tableViewCellHeight: CGFloat = 84
+        static let numberOfShimmerCells: Int = 9
+    }
+
     // MARK: - Public
 
     func configure(with viewModel: PeopleViewViewModel?, category: Categories) {
@@ -69,7 +81,7 @@ final class CategoryCell: UICollectionViewCell {
 private extension CategoryCell {
 
     func setupTableViewDelegatesAndRegistration() {
-        tableView.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIConstants.tableViewContentOffset
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -116,7 +128,8 @@ private extension CategoryCell {
 
 extension CategoryCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isLoading ? 9 : viewModel?.itemCount(for: category) ?? 0
+        guard let viewModel else { return UIConstants.numberOfShimmerCells }
+        return viewModel.itemsCount(for: category, inSearchMode: viewModel.inSearchMode) ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,7 +137,12 @@ extension CategoryCell: UITableViewDataSource {
             let cell = tableView.dequeue(SkeletonCell.self, for: indexPath)
             return cell
         } else {
-            guard let cellViewModel = viewModel?.cellViewModelFor(indexPath, category: category) else {
+            guard let viewModel,
+                  let cellViewModel = viewModel.cellViewModelFor(
+                    indexPath,
+                    category: category,
+                    inSearchMode: viewModel.inSearchMode)
+            else {
                 fatalError("Can't make cellViewModel")
             }
             let cell = tableView.dequeue(PersonTableViewCell.self, for: indexPath)
@@ -140,13 +158,16 @@ extension CategoryCell: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let person = viewModel?.itemFor(indexPath, category: category),
+        guard let inSearchMode = viewModel?.inSearchMode else { return }
+        if let person = viewModel?.itemFor(
+            indexPath, category: category,
+            inSearchMode: inSearchMode),
            !isLoading {
             onCellTap?(person)
         }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        84
+        return UIConstants.tableViewCellHeight
     }
 }

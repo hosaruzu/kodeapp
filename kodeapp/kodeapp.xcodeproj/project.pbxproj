@@ -22,7 +22,6 @@
 		0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */; };
 		0C35D5DB2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */; };
 		0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */; };
-		0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5DE2BA5F12100F46EA4 /* Loader.swift */; };
 		0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */; };
 		0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */; };
 		0C35D5EB2BA8A89100F46EA4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5EA2BA8A89100F46EA4 /* Router.swift */; };
@@ -99,7 +98,6 @@
 		0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0C35D5DA2BA49EC000F46EA4 /* PersonTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		0C35D5DC2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentrifiable.swift; sourceTree = "<group>"; };
-		0C35D5DE2BA5F12100F46EA4 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		0C35D5E42BA5F69800F46EA4 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		0C35D5E82BA8A88300F46EA4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0C35D5EA2BA8A89100F46EA4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -328,9 +326,9 @@
 		0C35D5C22BA1E2C700F46EA4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C5DF3DE2BFE4EA800DC65C1 /* App Contants */,
 				0C35D5E62BA8A85E00F46EA4 /* Library */,
 				0C35D5C32BA1E2CE00F46EA4 /* Extensions */,
-				0CA5AF932BAC6ECB0022BE5D /* AppConstants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -378,7 +376,6 @@
 				0CDBB4592BEC7B21003EBEFF /* Menu */,
 				0CDBB4502BEC7B21003EBEFF /* Slider */,
 				0C35D5D72BA31CBE00F46EA4 /* SearchBar.swift */,
-				0C35D5DE2BA5F12100F46EA4 /* Loader.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -438,6 +435,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0C5DF3DE2BFE4EA800DC65C1 /* App Contants */ = {
+			isa = PBXGroup;
+			children = (
+				0CDBB4512BEC7B21003EBEFF /* Categories.swift */,
+				0CA5AF932BAC6ECB0022BE5D /* AppConstants.swift */,
+			);
+			path = "App Contants";
+			sourceTree = "<group>";
+		};
 		0CA5AF8E2BAC6AA10022BE5D /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,21 +487,6 @@
 			path = Slider;
 			sourceTree = "<group>";
 		};
-		0CDBB4522BEC7B21003EBEFF /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				0CDBB4512BEC7B21003EBEFF /* Categories.swift */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		0CDBB4532BEC7B21003EBEFF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		0CDBB4552BEC7B21003EBEFF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,8 +507,6 @@
 		0CDBB4592BEC7B21003EBEFF /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				0CDBB4522BEC7B21003EBEFF /* Categories */,
-				0CDBB4532BEC7B21003EBEFF /* Extensions */,
 				0CDBB4582BEC7B21003EBEFF /* View */,
 			);
 			path = Menu;
@@ -686,7 +675,6 @@
 				0C5C779B2BAB45AD009833FC /* ProfileTableViewCell.swift in Sources */,
 				0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */,
 				0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */,
-				0C35D5DF2BA5F12100F46EA4 /* Loader.swift in Sources */,
 				0C5C77932BA9D6B7009833FC /* ProfileViewViewModel.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
 				0CA5AF902BAC6AF80022BE5D /* Avatar.swift in Sources */,

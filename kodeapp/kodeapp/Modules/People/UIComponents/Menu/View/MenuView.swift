@@ -146,4 +146,16 @@ extension MenuView: UICollectionViewDelegateFlowLayout {
     ) -> UIEdgeInsets {
         .init(top: 0, left: 16, bottom: 0, right: 0)
     }
+
+    // For prevent menu cell sliding from bottom on displaying
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        MenuCollectionViewCell.performWithoutAnimation {
+            cell.layoutIfNeeded()
+        }
+    }
 }
