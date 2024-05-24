@@ -65,6 +65,10 @@ final class PeopleViewViewModel {
         showPersonScreen(with: person)
     }
 
+    func onFilterTapEvent() {
+        showFilterModalScreen(with: self)
+    }
+
     func itemFor(
         _ indexPath: IndexPath,
         category: Categories,
@@ -141,5 +145,9 @@ final class PeopleViewViewModel {
 
     private func showPersonScreen(with person: Person) {
         coordinator.showPerson(with: person)
+    }
+
+    private func showFilterModalScreen(with viewModel: PeopleViewViewModel) {
+        coordinator.presentFilterScreen(with: viewModel)
     }
 }

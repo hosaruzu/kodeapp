@@ -101,6 +101,12 @@ final class ScreenFactoryImpl: ScreenFactory {
         alertController.addAction(cancelButton)
         return alertController
     }
+
+    @MainActor
+    func makeFilterScreen(with viewModel: PeopleViewViewModel) -> FilterViewController {
+        let filterViewController = FilterViewController(viewModel: viewModel)
+        return filterViewController
+    }
 }
 
 protocol CoordinatorFactory {

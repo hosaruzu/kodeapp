@@ -59,6 +59,7 @@
 		0CDBB45C2BEC7B21003EBEFF /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4512BEC7B21003EBEFF /* Categories.swift */; };
 		0CDBB45D2BEC7B21003EBEFF /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4542BEC7B21003EBEFF /* MenuCollectionViewCell.swift */; };
 		0CDBB45F2BEC7B21003EBEFF /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBB4572BEC7B21003EBEFF /* MenuView.swift */; };
+		0CDC5D6C2C00F36A00F6BE29 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDC5D6B2C00F36A00F6BE29 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		0CDBB4512BEC7B21003EBEFF /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		0CDBB4542BEC7B21003EBEFF /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CDBB4572BEC7B21003EBEFF /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		0CDC5D6B2C00F36A00F6BE29 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 		0C35D5B92BA1E1B000F46EA4 /* People */ = {
 			isa = PBXGroup;
 			children = (
+				0CDC5D682C00F35600F6BE29 /* Filter */,
 				0C35D5E02BA5F40600F46EA4 /* UIComponents */,
 				0C35D5CC2BA1E3C000F46EA4 /* TableView */,
 				0C35D5C82BA1E39000F46EA4 /* PeopleViewController.swift */,
@@ -512,6 +515,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		0CDC5D682C00F35600F6BE29 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				0CDC5D6B2C00F36A00F6BE29 /* FilterViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -710,6 +721,7 @@
 				0CA5AF942BAC6ECB0022BE5D /* AppConstants.swift in Sources */,
 				0C69C3EA2BBC2E08007BA969 /* UIColor+Ext.swift in Sources */,
 				0C35D5CB2BA1E3BA00F46EA4 /* PeopleViewViewModel.swift in Sources */,
+				0CDC5D6C2C00F36A00F6BE29 /* FilterViewController.swift in Sources */,
 				0C35D5DD2BA5EBE500F46EA4 /* ReuseIdentrifiable.swift in Sources */,
 				0C69C3E02BBAE6E6007BA969 /* LoaderView.swift in Sources */,
 				0C35D5D82BA31CBE00F46EA4 /* SearchBar.swift in Sources */,

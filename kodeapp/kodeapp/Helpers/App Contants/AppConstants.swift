@@ -25,4 +25,3 @@ enum AppConstants {
         case big = "120x120"
     }
 }
-

@@ -51,4 +51,9 @@ final class PeopleCoordinator: BaseCoordinator {
         let phoneAlertController = screenFactory.makeCallPhoneAlert(with: phone)
         router.present(phoneAlertController, animated: true)
     }
+
+    func presentFilterScreen(with viewModel: PeopleViewViewModel) {
+        let filterVC = UINavigationController(rootViewController: FilterViewController(viewModel: viewModel))
+        router.present(filterVC, animated: true)
+    }
 }
