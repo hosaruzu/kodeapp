@@ -150,4 +150,8 @@ final class PeopleViewViewModel {
     private func showFilterModalScreen(with viewModel: PeopleViewViewModel) {
         coordinator.presentFilterScreen(with: viewModel)
     }
+
+    // MARK: - EXPERIMENTAL: FILTER
+
+    var selectedFilterState: Filters = .standart
 }

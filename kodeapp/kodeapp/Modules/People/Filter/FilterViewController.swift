@@ -13,6 +13,10 @@ final class FilterViewController: UIViewController {
 
     private let viewModel: PeopleViewViewModel
 
+    // MARK: - Subviews
+
+    private let tableView = UITableView()
+
     // MARK: - Init
 
     init(viewModel: PeopleViewViewModel) {
@@ -29,6 +33,10 @@ final class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppearance()
+        setupTableView()
+        setupBackButton()
+        setupSubviews()
+        setupConstraints()
     }
 }
 
@@ -39,6 +47,46 @@ private extension FilterViewController {
     func setupAppearance() {
         view.backgroundColor = .systemBackground
         title = "Filter"
+    }
+}
+
+// MARK: - Setup table view
+
+private extension FilterViewController {
+
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(FilterCell.self)
+        tableView.allowsMultipleSelection = false
+        tableView.separatorStyle = .none
+//        tableView.selectRow(at: <#T##IndexPath?#>, animated: <#T##Bool#>, scrollPosition: <#T##UITableView.ScrollPosition#>)
+    }
+}
+
+// MARK: - Setup layout
+
+private extension FilterViewController {
+
+    func setupSubviews() {
+        view.addSubviews([tableView])
+    }
+
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+// MARK: - Back button
+
+private extension FilterViewController {
+
+    func setupBackButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: .backIcon,
             style: .plain,
@@ -49,5 +97,18 @@ private extension FilterViewController {
 
     @objc func dissmissModal() {
         dismiss(animated: true)
+    }
+}
+
+extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Filters.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeue(FilterCell.self, for: indexPath)
+        cell.configure(with: Filters.nameFor(indexPath))
+        return cell
     }
 }
