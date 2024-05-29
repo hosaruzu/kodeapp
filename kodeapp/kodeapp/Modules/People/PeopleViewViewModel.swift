@@ -12,6 +12,7 @@ final class PeopleViewViewModel {
     // MARK: - Callbacks
 
     var onLoad: (() -> Void)?
+    var onFilterStateChange: ((Filters) -> Void)?
 
     // MARK: - Data
 
@@ -59,6 +60,7 @@ final class PeopleViewViewModel {
 
     func onRefresh() {
         fetchPeople()
+        selectedFilterState = .standart
     }
 
     func onCellTap(with person: Person) {
@@ -136,6 +138,7 @@ final class PeopleViewViewModel {
             try? await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
+            defaultPeople = people
         } catch {
             print("Error: \(error.localizedDescription)")
         }
@@ -153,5 +156,24 @@ final class PeopleViewViewModel {
 
     // MARK: - EXPERIMENTAL: FILTER
 
-    var selectedFilterState: Filters = .standart
+    var selectedFilterState: Filters = .standart {
+
+        didSet {
+            filterPeople(by: selectedFilterState)
+            onFilterStateChange?(selectedFilterState)
+        }
+    }
+
+    private var defaultPeople: [Person] = []
+
+    func filterPeople(by filter: Filters) {
+        switch filter {
+        case .standart:
+            people = defaultPeople
+        case .ascending:
+            people = people.sorted { $0.firstName < $1.firstName }
+        case .descending:
+            people = people.sorted { $0.firstName > $1.firstName }
+        }
+    }
 }

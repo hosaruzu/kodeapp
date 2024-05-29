@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Filters: CaseIterable {
+enum Filters: Int, CaseIterable {
     case standart
     case ascending
     case descending
@@ -29,5 +29,9 @@ enum Filters: CaseIterable {
 
     static func nameFor(_ indexPath: IndexPath) -> String {
         Filters.allCases[indexPath.row].name
+    }
+
+    var index: Int {
+        rawValue
     }
 }

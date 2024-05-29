@@ -11,9 +11,9 @@ final class SearchBar: UISearchBar {
 
     // MARK: - Public properties
 
-    var isFilterClicked = false {
+    var filterState: Filters = .standart {
         didSet {
-            changeFilterIconColor()
+            changeFilterIconColor(with: filterState)
         }
     }
 
@@ -78,11 +78,19 @@ final class SearchBar: UISearchBar {
 
     // MARK: - Setup icons changing 
 
-    private func changeFilterIconColor() {
-        if isFilterClicked {
-            setImage(UIImage(resource: .filterIcon).withTintColor(.accent), for: .bookmark, state: .normal)
-        } else {
+    private func changeFilterIconColor(with state: Filters) {
+//        if isFilterClicked {
+//            setImage(UIImage(resource: .filterIcon).withTintColor(.accent), for: .bookmark, state: .normal)
+//        } else {
+//            setImage(UIImage(resource: .filterIcon), for: .bookmark, state: .normal)
+//        }
+        switch state {
+        case .standart:
             setImage(UIImage(resource: .filterIcon), for: .bookmark, state: .normal)
+        case .ascending:
+            setImage(UIImage(resource: .filterIconAsc).withTintColor(.accent, renderingMode: .alwaysOriginal), for: .bookmark, state: .normal)
+        case .descending:
+            setImage(UIImage(resource: .filterIcon).withTintColor(.accent, renderingMode: .alwaysOriginal), for: .bookmark, state: .normal)
         }
     }
 

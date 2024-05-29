@@ -60,7 +60,7 @@ private extension FilterViewController {
         tableView.register(FilterCell.self)
         tableView.allowsMultipleSelection = false
         tableView.separatorStyle = .none
-//        tableView.selectRow(at: <#T##IndexPath?#>, animated: <#T##Bool#>, scrollPosition: <#T##UITableView.ScrollPosition#>)
+        tableView.selectRow(at: [0, viewModel.selectedFilterState.index], animated: true, scrollPosition: .none)
     }
 }
 
@@ -110,5 +110,10 @@ extension FilterViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeue(FilterCell.self, for: indexPath)
         cell.configure(with: Filters.nameFor(indexPath))
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectedFilterState = Filters.allCases[indexPath.row]
+        dissmissModal()
     }
 }
