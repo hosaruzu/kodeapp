@@ -35,12 +35,13 @@ enum AppConstants {
         static let filterCheckedDescending = UIImage(resource: .filterIcon)
             .withTintColor(.accent, renderingMode: .alwaysOriginal)
 
-        static let searchNormal = UIImage(resource: .searchIconTwo)
+        static let searchNormal = UIImage(resource: .searchIcon)
             .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
 
-        static let searchChecked = UIImage(resource: .searchIconTwo)
+        static let searchChecked = UIImage(resource: .searchIcon)
             .withTintColor(.label, renderingMode: .alwaysOriginal)
 
-        static let clearTextField = UIImage(resource: .clearIcon).withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+        static let clearTextField = UIImage(resource: .clearIcon)
+            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
     }
 }
