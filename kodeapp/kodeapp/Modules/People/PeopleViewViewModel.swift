@@ -54,7 +54,7 @@ final class PeopleViewViewModel {
         !categorizedPeople.isEmpty
     }
 
-    var inSearchMode = false
+    private(set) var inSearchMode = false
 
     // MARK: - Public methods
 
@@ -126,6 +126,36 @@ final class PeopleViewViewModel {
         }
     }
 
+    // MARK: - Filter
+
+    private var selectedFilterState: Filters = .standart {
+        didSet {
+            filterPeople(by: selectedFilterState)
+            onFilterStateChange?(selectedFilterState)
+        }
+    }
+
+    private var defaultFilteredPeople: [Person] = []
+
+    var filterIndex: Int {
+        selectedFilterState.index
+    }
+
+    func onFilterTap(_ filter: Filters) {
+        selectedFilterState = filter
+    }
+
+    func filterPeople(by filter: Filters) {
+        switch filter {
+        case .standart:
+            people = defaultFilteredPeople
+        case .ascending:
+            people = people.sorted { $0.firstName < $1.firstName }
+        case .descending:
+            people = people.sorted { $0.firstName > $1.firstName }
+        }
+    }
+
     // MARK: - Fetch people
 
     private func fetchPeople() {
@@ -138,7 +168,7 @@ final class PeopleViewViewModel {
             try? await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
-            defaultPeople = people
+            defaultFilteredPeople = people
         } catch {
             print("Error: \(error.localizedDescription)")
         }
@@ -152,28 +182,5 @@ final class PeopleViewViewModel {
 
     private func showFilterModalScreen(with viewModel: PeopleViewViewModel) {
         coordinator.presentFilterScreen(with: viewModel)
-    }
-
-    // MARK: - EXPERIMENTAL: FILTER
-
-    var selectedFilterState: Filters = .standart {
-
-        didSet {
-            filterPeople(by: selectedFilterState)
-            onFilterStateChange?(selectedFilterState)
-        }
-    }
-
-    private var defaultPeople: [Person] = []
-
-    func filterPeople(by filter: Filters) {
-        switch filter {
-        case .standart:
-            people = defaultPeople
-        case .ascending:
-            people = people.sorted { $0.firstName < $1.firstName }
-        case .descending:
-            people = people.sorted { $0.firstName > $1.firstName }
-        }
     }
 }

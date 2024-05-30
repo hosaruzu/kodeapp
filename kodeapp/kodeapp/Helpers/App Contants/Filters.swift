@@ -31,6 +31,10 @@ enum Filters: Int, CaseIterable {
         Filters.allCases[indexPath.row].name
     }
 
+    static func filterFor(_ indexPath: IndexPath) -> Filters? {
+        Filters(rawValue: indexPath.row)
+    }
+
     var index: Int {
         rawValue
     }

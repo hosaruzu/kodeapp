@@ -24,4 +24,23 @@ enum AppConstants {
         case small = "60x60"
         case big = "120x120"
     }
+
+    enum Images {
+        static let filterNormal = UIImage(resource: .filterIcon)
+            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+
+        static let filterCheckedAscending = UIImage(resource: .filterIconAsc)
+            .withTintColor(.accent, renderingMode: .alwaysOriginal)
+
+        static let filterCheckedDescending = UIImage(resource: .filterIcon)
+            .withTintColor(.accent, renderingMode: .alwaysOriginal)
+
+        static let searchNormal = UIImage(resource: .searchIconTwo)
+            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+
+        static let searchChecked = UIImage(resource: .searchIconTwo)
+            .withTintColor(.label, renderingMode: .alwaysOriginal)
+
+        static let clearTextField = UIImage(resource: .clearIcon).withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+    }
 }
