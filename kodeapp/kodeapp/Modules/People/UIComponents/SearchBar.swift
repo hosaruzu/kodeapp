@@ -11,9 +11,9 @@ final class SearchBar: UISearchBar {
 
     // MARK: - Public properties
 
-    var isFilterClicked = false {
+    var filterState: Filters = .standart {
         didSet {
-            changeFilterIconColor()
+            changeFilterIconColor(with: filterState)
         }
     }
 
@@ -50,7 +50,7 @@ final class SearchBar: UISearchBar {
         searchTextField.layer.cornerRadius = 16
         searchTextField.clipsToBounds = true
         searchTextField.attributedPlaceholder = NSAttributedString(
-            string: "Search name, tag, email...",
+            string: "Search name, tag...",
             attributes: [
                 .font: UIFont.systemFont(ofSize: 16, weight: .medium),
                 .foregroundColor: UIColor.tertiaryLabel
@@ -60,37 +60,40 @@ final class SearchBar: UISearchBar {
     // MARK: - Setup icons
 
     private func setupSearchIcon() {
-        setImage(UIImage(resource: .searchIcon), for: .search, state: .normal)
+        setImage(AppConstants.Images.searchNormal, for: .search, state: .normal)
         setPositionAdjustment(.init(horizontal: 10, vertical: 0), for: .search)
 
     }
 
     private func setupClearButton() {
-        setImage(UIImage(resource: .clearIcon), for: .clear, state: .normal)
+        setImage(AppConstants.Images.clearTextField, for: .clear, state: .normal)
         setPositionAdjustment(.init(horizontal: -10, vertical: 0), for: .clear)
     }
 
     private func setupFilterButton() {
         showsBookmarkButton = true
         setPositionAdjustment(.init(horizontal: -10, vertical: 0), for: .bookmark)
-        setImage(UIImage(resource: .filterIcon), for: .bookmark, state: .normal)
+        setImage(AppConstants.Images.filterNormal, for: .bookmark, state: .normal)
     }
 
     // MARK: - Setup icons changing 
 
-    private func changeFilterIconColor() {
-        if isFilterClicked {
-            setImage(UIImage(resource: .filterIcon).withTintColor(.accent), for: .bookmark, state: .normal)
-        } else {
-            setImage(UIImage(resource: .filterIcon), for: .bookmark, state: .normal)
+    private func changeFilterIconColor(with state: Filters) {
+        switch state {
+        case .standart:
+            setImage(AppConstants.Images.filterNormal, for: .bookmark, state: .normal)
+        case .ascending:
+            setImage(AppConstants.Images.filterCheckedAscending, for: .bookmark, state: .normal)
+        case .descending:
+            setImage(AppConstants.Images.filterCheckedDescending, for: .bookmark, state: .normal)
         }
     }
 
     private func changeSearchIconColor() {
         if isSearching {
-            setImage(UIImage(resource: .searchIcon).withTintColor(.label), for: .search, state: .normal)
+            setImage(AppConstants.Images.searchChecked, for: .search, state: .normal)
         } else {
-            setImage(UIImage(resource: .searchIcon), for: .search, state: .normal)
+            setImage(AppConstants.Images.searchNormal, for: .search, state: .normal)
         }
     }
 

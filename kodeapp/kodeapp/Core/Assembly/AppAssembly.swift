@@ -89,7 +89,6 @@ final class ScreenFactoryImpl: ScreenFactory {
             let cleanedPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
             if let phoneCallURL = URL(string: "tel://+7\(cleanedPhoneNumber)"),
                application.canOpenURL(phoneCallURL) {
-                print("Will be call \(cleanedPhoneNumber)")
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             } else {
                 print("Can't open phone \(cleanedPhoneNumber)")
@@ -100,6 +99,12 @@ final class ScreenFactoryImpl: ScreenFactory {
         alertController.addAction(callPhoneButton)
         alertController.addAction(cancelButton)
         return alertController
+    }
+
+    @MainActor
+    func makeFilterScreen(with viewModel: PeopleViewViewModel) -> FilterViewController {
+        let filterViewController = FilterViewController(viewModel: viewModel)
+        return filterViewController
     }
 }
 

@@ -156,7 +156,10 @@ extension PeopleViewController: UISearchBarDelegate {
     }
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        headerSearchBar.isFilterClicked = !headerSearchBar.isFilterClicked
+        viewModel.onFilterTapEvent()
+        viewModel.onFilterStateChange = { [weak self] state in
+            self?.headerSearchBar.filterState = state
+        }
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

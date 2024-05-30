@@ -12,6 +12,7 @@ final class PeopleViewViewModel {
     // MARK: - Callbacks
 
     var onLoad: (() -> Void)?
+    var onFilterStateChange: ((Filters) -> Void)?
 
     // MARK: - Data
 
@@ -53,16 +54,21 @@ final class PeopleViewViewModel {
         !categorizedPeople.isEmpty
     }
 
-    var inSearchMode = false
+    private(set) var inSearchMode = false
 
     // MARK: - Public methods
 
     func onRefresh() {
         fetchPeople()
+        selectedFilterState = .standart
     }
 
     func onCellTap(with person: Person) {
         showPersonScreen(with: person)
+    }
+
+    func onFilterTapEvent() {
+        showFilterModalScreen(with: self)
     }
 
     func itemFor(
@@ -120,6 +126,36 @@ final class PeopleViewViewModel {
         }
     }
 
+    // MARK: - Filter
+
+    private var selectedFilterState: Filters = .standart {
+        didSet {
+            filterPeople(by: selectedFilterState)
+            onFilterStateChange?(selectedFilterState)
+        }
+    }
+
+    private var defaultFilteredPeople: [Person] = []
+
+    var filterIndex: Int {
+        selectedFilterState.index
+    }
+
+    func onFilterTap(_ filter: Filters) {
+        selectedFilterState = filter
+    }
+
+    func filterPeople(by filter: Filters) {
+        switch filter {
+        case .standart:
+            people = defaultFilteredPeople
+        case .ascending:
+            people = people.sorted { $0.firstName < $1.firstName }
+        case .descending:
+            people = people.sorted { $0.firstName > $1.firstName }
+        }
+    }
+
     // MARK: - Fetch people
 
     private func fetchPeople() {
@@ -132,6 +168,7 @@ final class PeopleViewViewModel {
             try? await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
+            defaultFilteredPeople = people
         } catch {
             print("Error: \(error.localizedDescription)")
         }
@@ -141,5 +178,9 @@ final class PeopleViewViewModel {
 
     private func showPersonScreen(with person: Person) {
         coordinator.showPerson(with: person)
+    }
+
+    private func showFilterModalScreen(with viewModel: PeopleViewViewModel) {
+        coordinator.presentFilterScreen(with: viewModel)
     }
 }
