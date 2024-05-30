@@ -78,6 +78,7 @@ final class PeopleViewController: UIViewController {
 
     private enum UIConstants {
         static let searchBarHorizontalOffset: CGFloat = 16
+        static let searchBarheight: CGFloat = 44
         static let menuViewToSearchBarOffet: CGFloat = 6
         static let menuViewHeight: CGFloat = 44
     }
@@ -95,6 +96,10 @@ private extension PeopleViewController {
 // MARK: - Setup subviews
 
 private extension PeopleViewController {
+
+    func setupHeaderSearchBar() {
+
+    }
 
     func addSubviews() {
         view.addSubviews([
@@ -117,6 +122,7 @@ private extension PeopleViewController {
                 equalTo: view.trailingAnchor,
                 constant: -UIConstants.searchBarHorizontalOffset
             ),
+            headerSearchBar.heightAnchor.constraint(equalToConstant: UIConstants.searchBarheight),
 
             menuView.topAnchor.constraint(
                 equalTo: headerSearchBar.bottomAnchor,
@@ -135,11 +141,16 @@ private extension PeopleViewController {
     }
 }
 
-// MARK: - UISearchBarDelegate
+// MARK: - UISearchBar & UISearchBarDelegate
 
 extension PeopleViewController: UISearchBarDelegate {
 
     func setupSearchBar() {
+        let backgroundImage = searchBarImage(size: .init(
+            width: view.bounds.width,
+            height: UIConstants.searchBarheight)
+        )
+        headerSearchBar.setSearchFieldBackgroundImage(backgroundImage, for: .normal)
         headerSearchBar.delegate = self
     }
 
