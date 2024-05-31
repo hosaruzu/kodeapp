@@ -14,6 +14,7 @@ final class PeopleViewController: UIViewController {
     private let headerSearchBar = SearchBar()
     private let menuView = MenuView()
     private let sliderView = SliderView()
+    private let emptyStateView = EmptyStateView()
 
     // MARK: - View model
 
@@ -68,19 +69,14 @@ final class PeopleViewController: UIViewController {
         sliderView.onCellTap = { [weak self] person in
             self?.viewModel.onCellTap(with: person)
         }
+
+        viewModel.onSearchStateChange = { [weak self] state in
+            state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
+        }
     }
 
     private func display(with viewModel: PeopleViewViewModel?) {
         sliderView.configure(with: viewModel)
-    }
-
-    // MARK: - UI constants
-
-    private enum UIConstants {
-        static let searchBarHorizontalOffset: CGFloat = 16
-        static let searchBarheight: CGFloat = 44
-        static let menuViewToSearchBarOffet: CGFloat = 6
-        static let menuViewHeight: CGFloat = 44
     }
 }
 
@@ -105,7 +101,8 @@ private extension PeopleViewController {
         view.addSubviews([
             headerSearchBar,
             menuView,
-            sliderView
+            sliderView,
+            emptyStateView
         ])
     }
 
@@ -116,26 +113,36 @@ private extension PeopleViewController {
             ),
             headerSearchBar.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: UIConstants.searchBarHorizontalOffset
+                constant: Spec.searchBarHorizontalOffset
             ),
             headerSearchBar.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -UIConstants.searchBarHorizontalOffset
+                constant: -Spec.searchBarHorizontalOffset
             ),
-            headerSearchBar.heightAnchor.constraint(equalToConstant: UIConstants.searchBarheight),
+            headerSearchBar.heightAnchor.constraint(equalToConstant: Spec.searchBarheight),
 
             menuView.topAnchor.constraint(
                 equalTo: headerSearchBar.bottomAnchor,
-                constant: UIConstants.menuViewToSearchBarOffet),
+                constant: Spec.menuViewToSearchBarOffet),
             menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             menuView.heightAnchor.constraint(
-                equalToConstant: UIConstants.menuViewHeight),
+                equalToConstant: Spec.menuViewHeight),
 
             sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor),
             sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sliderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            emptyStateView.topAnchor.constraint(
+                equalTo: menuView.bottomAnchor,
+                constant: Spec.emptyStateViewToMenuOffset),
+            emptyStateView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Spec.emptyStateHorizontalOffset),
+            emptyStateView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: -Spec.emptyStateHorizontalOffset)
         ])
 
     }
@@ -148,7 +155,7 @@ extension PeopleViewController: UISearchBarDelegate {
     func setupSearchBar() {
         let backgroundImage = searchBarImage(size: .init(
             width: view.bounds.width,
-            height: UIConstants.searchBarheight)
+            height: Spec.searchBarheight)
         )
         headerSearchBar.setSearchFieldBackgroundImage(backgroundImage, for: .normal)
         headerSearchBar.delegate = self
@@ -176,4 +183,15 @@ extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.onSearchEvent(searchText)
     }
+}
+
+// MARK: - UI constants
+
+private enum Spec {
+    static let searchBarHorizontalOffset: CGFloat = 16
+    static let searchBarheight: CGFloat = 44
+    static let menuViewToSearchBarOffet: CGFloat = 6
+    static let menuViewHeight: CGFloat = 44
+    static let emptyStateViewToMenuOffset: CGFloat = 80
+    static let emptyStateHorizontalOffset: CGFloat = 16
 }
