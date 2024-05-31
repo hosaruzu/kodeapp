@@ -13,6 +13,7 @@ final class PeopleViewViewModel {
 
     var onLoad: (() -> Void)?
     var onFilterStateChange: ((Filters) -> Void)?
+    var onSearchStateChange: ((Bool) -> Void)?
 
     // MARK: - Data
 
@@ -124,6 +125,7 @@ final class PeopleViewViewModel {
             || $0.firstName.lowercased().contains(searchText)
             || $0.userTag.lowercased().contains(searchText)
         }
+        onSearchStateChange?(filteredPeople.isEmpty)
     }
 
     // MARK: - Filter
