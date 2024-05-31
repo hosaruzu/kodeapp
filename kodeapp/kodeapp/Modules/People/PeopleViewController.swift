@@ -14,6 +14,7 @@ final class PeopleViewController: UIViewController {
     private let headerSearchBar = SearchBar()
     private let menuView = MenuView()
     private let sliderView = SliderView()
+    private let emptyStateView = EmptyStateView()
 
     // MARK: - View model
 
@@ -39,6 +40,7 @@ final class PeopleViewController: UIViewController {
         addSubviews()
         setupLayout()
         setupBindings()
+        setEmptyStateView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +93,12 @@ private extension PeopleViewController {
     func setupAppearance() {
         view.backgroundColor = .systemBackground
     }
+
+    func setEmptyStateView() {
+        viewModel.onSearchStateChange = { [weak self] state in
+            state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
+        }
+    }
 }
 
 // MARK: - Setup subviews
@@ -105,7 +113,8 @@ private extension PeopleViewController {
         view.addSubviews([
             headerSearchBar,
             menuView,
-            sliderView
+            sliderView,
+            emptyStateView
         ])
     }
 
@@ -135,7 +144,11 @@ private extension PeopleViewController {
             sliderView.topAnchor.constraint(equalTo: menuView.bottomAnchor),
             sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sliderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
+            emptyStateView.topAnchor.constraint(equalTo: menuView.bottomAnchor, constant: 80),
+            emptyStateView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            emptyStateView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
 
     }
