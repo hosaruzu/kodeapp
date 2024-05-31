@@ -72,6 +72,8 @@ final class PeopleViewViewModel {
         showFilterModalScreen(with: self)
     }
 
+    // MARK: - Table view data source
+
     func itemFor(
         _ indexPath: IndexPath,
         category: Categories,
