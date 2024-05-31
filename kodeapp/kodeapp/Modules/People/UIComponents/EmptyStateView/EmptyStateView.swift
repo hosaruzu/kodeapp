@@ -14,7 +14,7 @@ final class EmptyStateView: UIView {
     private let emptyImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = .init(systemName: "magnifyingglass.circle.fill")
+        image.image = .init(resource: .magnyfyingGlass)
         return image
     }()
 
@@ -39,10 +39,23 @@ final class EmptyStateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupVStack()
+        hide()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public
+
+    func show() {
+        isHidden = false
+        layer.opacity = 1
+    }
+
+    func hide() {
+        isHidden = true
+        layer.opacity = 0
     }
 }
 
@@ -65,7 +78,7 @@ private extension EmptyStateView {
             vStack.topAnchor.constraint(equalTo: topAnchor),
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            vStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
