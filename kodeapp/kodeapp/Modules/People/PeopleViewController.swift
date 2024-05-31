@@ -40,7 +40,6 @@ final class PeopleViewController: UIViewController {
         addSubviews()
         setupLayout()
         setupBindings()
-        setEmptyStateView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +69,10 @@ final class PeopleViewController: UIViewController {
         sliderView.onCellTap = { [weak self] person in
             self?.viewModel.onCellTap(with: person)
         }
+
+        viewModel.onSearchStateChange = { [weak self] state in
+            state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
+        }
     }
 
     private func display(with viewModel: PeopleViewViewModel?) {
@@ -92,12 +95,6 @@ private extension PeopleViewController {
 
     func setupAppearance() {
         view.backgroundColor = .systemBackground
-    }
-
-    func setEmptyStateView() {
-        viewModel.onSearchStateChange = { [weak self] state in
-            state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
-        }
     }
 }
 

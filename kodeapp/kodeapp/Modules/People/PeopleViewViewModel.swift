@@ -120,14 +120,17 @@ final class PeopleViewViewModel {
     func onSearchEvent(_ searchText: String = "") {
         inSearchMode = !searchText.isEmpty
         filteredPeople = people
-        guard !searchText.isEmpty else { return }
+        guard inSearchMode else {
+onSearchStateChange?(inSearchMode)
+            return
+        }
         let searchText = searchText.lowercased()
         filteredPeople = filteredPeople.filter {
             $0.lastName.lowercased().contains(searchText)
             || $0.firstName.lowercased().contains(searchText)
             || $0.userTag.lowercased().contains(searchText)
         }
-        onSearchStateChange?(filteredPeople.isEmpty)
+        onSearchStateChange?(inSearchMode && filteredPeople.isEmpty)
     }
 
     // MARK: - Filter
