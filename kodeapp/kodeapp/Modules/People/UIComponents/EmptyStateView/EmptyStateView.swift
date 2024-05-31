@@ -49,13 +49,18 @@ final class EmptyStateView: UIView {
     // MARK: - Public
 
     func show() {
-        isHidden = false
-        layer.opacity = 1
+        UIView.animate(withDuration: 0.3) { [self] in
+            isHidden = false
+            layer.opacity = 1
+        }
+
     }
 
     func hide() {
-        isHidden = true
-        layer.opacity = 0
+        UIView.animate(withDuration: 0.3) { [self] in
+            isHidden = true
+            layer.opacity = 0
+        }
     }
 }
 
