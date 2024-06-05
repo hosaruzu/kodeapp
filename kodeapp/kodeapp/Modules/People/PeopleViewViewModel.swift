@@ -121,7 +121,7 @@ final class PeopleViewViewModel {
         inSearchMode = !searchText.isEmpty
         filteredPeople = people
         guard inSearchMode else {
-onSearchStateChange?(inSearchMode)
+            onSearchStateChange?(inSearchMode)
             return
         }
         let searchText = searchText.lowercased()
@@ -176,8 +176,10 @@ onSearchStateChange?(inSearchMode)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
             defaultFilteredPeople = people
+        } catch NetworkError.noInternetConnection {
+            print("Error: internet")
         } catch {
-            print("Error: \(error.localizedDescription)")
+            print("other errors")
         }
     }
 
