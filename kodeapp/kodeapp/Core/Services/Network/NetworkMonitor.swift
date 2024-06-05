@@ -7,7 +7,7 @@
 import Network
 
 protocol NetworkMonitor {
-    var onConnectionStatusChange: ((Bool) -> Void)? { get }
+    var onConnectionStatusChange: ((Bool) -> Void)? { get set }
 }
 
 final class NetworkMonitorImpl: NetworkMonitor {

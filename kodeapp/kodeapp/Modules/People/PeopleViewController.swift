@@ -15,6 +15,7 @@ final class PeopleViewController: UIViewController {
     private let menuView = MenuView()
     private let sliderView = SliderView()
     private let emptyStateView = EmptyStateView()
+    private let networkErrorView = NetworkErrorView()
 
     // MARK: - View model
 
@@ -45,6 +46,17 @@ final class PeopleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // extract to method
+        // add toggle hiding search bar view
+        viewModel.onNetworkStateChange = { [weak self] isConnected in
+            !isConnected ? self?.networkErrorView.show() : self?.networkErrorView.hide()
+        }
+
     }
 
     // MARK: - Setup bindings
@@ -102,7 +114,8 @@ private extension PeopleViewController {
             headerSearchBar,
             menuView,
             sliderView,
-            emptyStateView
+            emptyStateView,
+            networkErrorView
         ])
     }
 
@@ -142,7 +155,12 @@ private extension PeopleViewController {
                 constant: Spec.emptyStateHorizontalOffset),
             emptyStateView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -Spec.emptyStateHorizontalOffset)
+                constant: -Spec.emptyStateHorizontalOffset),
+
+            networkErrorView.topAnchor.constraint(equalTo: view.topAnchor),
+            networkErrorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            networkErrorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            networkErrorView.bottomAnchor.constraint(equalTo: headerSearchBar.bottomAnchor)
         ])
 
     }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C053FD52C10C196001800D1 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD42C10C196001800D1 /* ErrorView.swift */; };
-		0C053FD72C10C1D6001800D1 /* NoConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */; };
+		0C053FD72C10C1D6001800D1 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD62C10C1D6001800D1 /* NetworkErrorView.swift */; };
 		0C053FD92C10C254001800D1 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD82C10C254001800D1 /* NetworkMonitor.swift */; };
 		0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5792B9F298100F46EA4 /* AppDelegate.swift */; };
 		0C35D57C2B9F298100F46EA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D57B2B9F298100F46EA4 /* SceneDelegate.swift */; };
@@ -88,7 +88,7 @@
 
 /* Begin PBXFileReference section */
 		0C053FD42C10C196001800D1 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionErrorView.swift; sourceTree = "<group>"; };
+		0C053FD62C10C1D6001800D1 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		0C053FD82C10C254001800D1 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0C35D5762B9F298100F46EA4 /* kodeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kodeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C35D5792B9F298100F46EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				0C053FD42C10C196001800D1 /* ErrorView.swift */,
-				0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */,
+				0C053FD62C10C1D6001800D1 /* NetworkErrorView.swift */,
 			);
 			path = ErrorViews;
 			sourceTree = "<group>";
@@ -743,7 +743,7 @@
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
 				0C816FD72C06253300DEF7FA /* Filters.swift in Sources */,
 				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
-				0C053FD72C10C1D6001800D1 /* NoConnectionErrorView.swift in Sources */,
+				0C053FD72C10C1D6001800D1 /* NetworkErrorView.swift in Sources */,
 				0C69C3E62BBC2556007BA969 /* SkeletonCell.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,

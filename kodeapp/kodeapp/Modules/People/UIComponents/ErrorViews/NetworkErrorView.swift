@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NoConnectionErrorView: UIView {
+final class NetworkErrorView: UIView {
 
     private var containerView: UIView = {
         let view = UIView()
@@ -56,7 +56,7 @@ final class NoConnectionErrorView: UIView {
 
 // MARK: - Setup view
 
-private extension NoConnectionErrorView {
+private extension NetworkErrorView {
 
     func setupAppearance() {
         backgroundColor = .clear
@@ -92,7 +92,7 @@ private extension NoConnectionErrorView {
 
 // MARK: - Setup animation
 
-private extension NoConnectionErrorView {
+private extension NetworkErrorView {
 
     private func animate(_ direction: AnimationDirection) {
         let duration = Spec.Animation.animationDuration
@@ -111,7 +111,7 @@ private extension NoConnectionErrorView {
 
 private enum Spec {
 
-    static let containerViewHeight: CGFloat = 120
+    static let containerViewHeight: CGFloat = 108
     static let errorLabelBottomOffset: CGFloat = -12
     static let errorLabelLeadingOffset: CGFloat = 24
 

@@ -14,9 +14,13 @@ protocol PeopleNetworkService {
 
 final class PeopleNetworkServiceImpl: PeopleNetworkService {
 
+    // MARK: - Dependencies
+
     private let networkClient: NetworkClient
     private let decoder: NetworkDecoder
     private let request: NetworkRequst
+
+    // MARK: - Init
 
     init(
         networkClient: NetworkClient,

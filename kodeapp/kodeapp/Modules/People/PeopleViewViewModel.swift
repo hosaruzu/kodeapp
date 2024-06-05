@@ -14,6 +14,7 @@ final class PeopleViewViewModel {
     var onLoad: (() -> Void)?
     var onFilterStateChange: ((Filters) -> Void)?
     var onSearchStateChange: ((Bool) -> Void)?
+    var onNetworkStateChange: ((Bool) -> Void)?
 
     // MARK: - Data
 
@@ -39,14 +40,21 @@ final class PeopleViewViewModel {
     // MARK: - Dependecies
 
     private let networkService: PeopleNetworkService
+    private var networkMonitor: NetworkMonitor
     private let coordinator: PeopleCoordinator
 
     // MARK: - Init
 
-    init(networkService: PeopleNetworkService, coordinator: PeopleCoordinator) {
+    init(
+        networkService: PeopleNetworkService,
+        coordinator: PeopleCoordinator,
+        networkMonitor: NetworkMonitor
+    ) {
         self.networkService = networkService
         self.coordinator = coordinator
+        self.networkMonitor = networkMonitor
         fetchPeople()
+        onNetworkConnectionChange()
     }
 
     // MARK: - Public properties
@@ -70,6 +78,10 @@ final class PeopleViewViewModel {
 
     func onFilterTapEvent() {
         showFilterModalScreen(with: self)
+    }
+
+    func onErrorEvent() {
+        // show toast?
     }
 
     // MARK: - Table view data source
@@ -180,6 +192,15 @@ final class PeopleViewViewModel {
             print("Error: internet")
         } catch {
             print("other errors")
+        }
+    }
+
+    // MARK: - Network connection
+
+    private func onNetworkConnectionChange() {
+        networkMonitor.onConnectionStatusChange = { isConnected in
+            print(isConnected)
+            self.onNetworkStateChange?(isConnected)
         }
     }
 
