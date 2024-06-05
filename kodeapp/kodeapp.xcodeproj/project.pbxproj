@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C053FD52C10C196001800D1 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD42C10C196001800D1 /* ErrorView.swift */; };
+		0C053FD72C10C1D6001800D1 /* NoConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */; };
+		0C053FD92C10C254001800D1 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C053FD82C10C254001800D1 /* NetworkMonitor.swift */; };
 		0C35D57A2B9F298100F46EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5792B9F298100F46EA4 /* AppDelegate.swift */; };
 		0C35D57C2B9F298100F46EA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D57B2B9F298100F46EA4 /* SceneDelegate.swift */; };
 		0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C35D5822B9F298100F46EA4 /* kodeapp.xcdatamodeld */; };
@@ -84,6 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C053FD42C10C196001800D1 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionErrorView.swift; sourceTree = "<group>"; };
+		0C053FD82C10C254001800D1 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		0C35D5762B9F298100F46EA4 /* kodeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kodeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C35D5792B9F298100F46EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C35D57B2B9F298100F46EA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +178,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C053FD32C10C172001800D1 /* ErrorViews */ = {
+			isa = PBXGroup;
+			children = (
+				0C053FD42C10C196001800D1 /* ErrorView.swift */,
+				0C053FD62C10C1D6001800D1 /* NoConnectionErrorView.swift */,
+			);
+			path = ErrorViews;
+			sourceTree = "<group>";
+		};
 		0C35D56D2B9F298100F46EA4 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +311,7 @@
 				0CA5AF9E2BB15FE70022BE5D /* PeopleEndpoint.swift */,
 				0CA5AFAD2BB1B4330022BE5D /* PeopleNetworkService.swift */,
 				0C69C3DB2BB6DF33007BA969 /* ImageLoader.swift */,
+				0C053FD82C10C254001800D1 /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -385,6 +401,7 @@
 		0C35D5E02BA5F40600F46EA4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				0C053FD32C10C172001800D1 /* ErrorViews */,
 				0C816FDC2C09BE2500DEF7FA /* EmptyStateView */,
 				0CDBB4592BEC7B21003EBEFF /* Menu */,
 				0CDBB4502BEC7B21003EBEFF /* Slider */,
@@ -708,6 +725,7 @@
 				0CA5AFA42BB1628B0022BE5D /* Endpoint.swift in Sources */,
 				0CA5AFA62BB162EB0022BE5D /* NetworkError.swift in Sources */,
 				0C5C77932BA9D6B7009833FC /* ProfileViewViewModel.swift in Sources */,
+				0C053FD52C10C196001800D1 /* ErrorView.swift in Sources */,
 				0C35D5842B9F298100F46EA4 /* kodeapp.xcdatamodeld in Sources */,
 				0CA5AF902BAC6AF80022BE5D /* Avatar.swift in Sources */,
 				0C5C778C2BA9C7DB009833FC /* AppCoordinator.swift in Sources */,
@@ -720,10 +738,12 @@
 				0C816FDE2C09BE4200DEF7FA /* EmptyStateView.swift in Sources */,
 				0C35D5E52BA5F69800F46EA4 /* AppAssembly.swift in Sources */,
 				0C69C3E22BBAEE4A007BA969 /* ProfileTableViewViewModel.swift in Sources */,
+				0C053FD92C10C254001800D1 /* NetworkMonitor.swift in Sources */,
 				0CA5AFAE2BB1B4330022BE5D /* PeopleNetworkService.swift in Sources */,
 				0CA5AF962BADB5660022BE5D /* UILabel+Formatter.swift in Sources */,
 				0C816FD72C06253300DEF7FA /* Filters.swift in Sources */,
 				0CA5AFA82BB163620022BE5D /* NetworkRequst.swift in Sources */,
+				0C053FD72C10C1D6001800D1 /* NoConnectionErrorView.swift in Sources */,
 				0C69C3E62BBC2556007BA969 /* SkeletonCell.swift in Sources */,
 				0CA5AF9F2BB15FE70022BE5D /* PeopleEndpoint.swift in Sources */,
 				0C35D5E92BA8A88300F46EA4 /* Coordinator.swift in Sources */,
