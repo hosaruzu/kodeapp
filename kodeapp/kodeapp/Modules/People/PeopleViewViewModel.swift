@@ -14,6 +14,8 @@ final class PeopleViewViewModel {
     var onLoad: (() -> Void)?
     var onFilterStateChange: ((Filters) -> Void)?
     var onSearchStateChange: ((Bool) -> Void)?
+    var onNetworkStateChange: ((Bool) -> Void)?
+    var onErrorEvent: (() -> Void)?
 
     // MARK: - Data
 
@@ -39,14 +41,21 @@ final class PeopleViewViewModel {
     // MARK: - Dependecies
 
     private let networkService: PeopleNetworkService
+    private var networkMonitor: NetworkMonitor
     private let coordinator: PeopleCoordinator
 
     // MARK: - Init
 
-    init(networkService: PeopleNetworkService, coordinator: PeopleCoordinator) {
+    init(
+        networkService: PeopleNetworkService,
+        coordinator: PeopleCoordinator,
+        networkMonitor: NetworkMonitor
+    ) {
         self.networkService = networkService
         self.coordinator = coordinator
+        self.networkMonitor = networkMonitor
         fetchPeople()
+        onNetworkConnectionChange()
     }
 
     // MARK: - Public properties
@@ -70,6 +79,10 @@ final class PeopleViewViewModel {
 
     func onFilterTapEvent() {
         showFilterModalScreen(with: self)
+    }
+
+    func onErrorButtonTap() {
+        fetchPeople()
     }
 
     // MARK: - Table view data source
@@ -121,7 +134,7 @@ final class PeopleViewViewModel {
         inSearchMode = !searchText.isEmpty
         filteredPeople = people
         guard inSearchMode else {
-onSearchStateChange?(inSearchMode)
+            onSearchStateChange?(inSearchMode)
             return
         }
         let searchText = searchText.lowercased()
@@ -176,8 +189,20 @@ onSearchStateChange?(inSearchMode)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
             defaultFilteredPeople = people
+        } catch NetworkError.noInternetConnection {
+            onNetworkStateChange?(false)
+            onErrorEvent?()
         } catch {
-            print("Error: \(error.localizedDescription)")
+            onErrorEvent?()
+        }
+    }
+
+    // MARK: - Network connection
+
+    private func onNetworkConnectionChange() {
+        networkMonitor.onConnectionStatusChange = { isConnected in
+            print(isConnected)
+            self.onNetworkStateChange?(isConnected)
         }
     }
 

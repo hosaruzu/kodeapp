@@ -19,6 +19,7 @@ final class AppAssembly {
     fileprivate let decoder: NetworkDecoderImpl
     fileprivate let request: NetworkRequstsImpl
     fileprivate let networkService: PeopleNetworkServiceImpl
+    fileprivate let networkMonitor: NetworkMonitorImpl
 
     init() {
         screenFactory = ScreenFactoryImpl()
@@ -31,9 +32,17 @@ final class AppAssembly {
         userDefaults = .standard
         decoder = NetworkDecoderImpl()
         request = NetworkRequstsImpl()
+        networkMonitor = NetworkMonitorImpl()
         networkCacheService = NetworkCacheServiceImpl(userDefaults: userDefaults, urlCache: urlCache)
-        networkClient = NetworkClientImpl(urlSession: urlSession, cacheService: networkCacheService)
-        networkService = PeopleNetworkServiceImpl(networkClient: networkClient, decoder: decoder, request: request)
+        networkClient = NetworkClientImpl(
+            urlSession: urlSession,
+            cacheService: networkCacheService
+        )
+        networkService = PeopleNetworkServiceImpl(
+            networkClient: networkClient,
+            decoder: decoder,
+            request: request
+        )
 
         screenFactory.appAssembly = self
     }
@@ -70,7 +79,11 @@ final class ScreenFactoryImpl: ScreenFactory {
 
     @MainActor
     func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController {
-        let viewModel = PeopleViewViewModel(networkService: appAssembly.networkService, coordinator: coordinator)
+        let viewModel = PeopleViewViewModel(
+            networkService: appAssembly.networkService,
+            coordinator: coordinator,
+            networkMonitor: appAssembly.networkMonitor
+        )
         let viewController = PeopleViewController(viewModel: viewModel)
         return viewController
     }

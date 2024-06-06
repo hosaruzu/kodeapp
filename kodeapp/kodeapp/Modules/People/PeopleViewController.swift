@@ -15,6 +15,8 @@ final class PeopleViewController: UIViewController {
     private let menuView = MenuView()
     private let sliderView = SliderView()
     private let emptyStateView = EmptyStateView()
+    private let networkErrorView = NetworkErrorView()
+    private let errorView = ErrorView()
 
     // MARK: - View model
 
@@ -47,6 +49,15 @@ final class PeopleViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.onNetworkStateChange = { [weak self] isConnected in
+            self?.handleNetworkErrorDisplay(isConnected)
+        }
+
+    }
+
     // MARK: - Setup bindings
 
     private func setupBindings() {
@@ -73,10 +84,40 @@ final class PeopleViewController: UIViewController {
         viewModel.onSearchStateChange = { [weak self] state in
             state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
         }
+
+        viewModel.onErrorEvent = { [weak self] in
+            self?.showErrorView()
+            self?.errorView.show()
+        }
+
+        errorView.onButtonTap = { [weak self] in
+            self?.hideErrorView()
+            self?.viewModel.onErrorButtonTap()
+        }
     }
 
     private func display(with viewModel: PeopleViewViewModel?) {
         sliderView.configure(with: viewModel)
+    }
+
+    private func handleNetworkErrorDisplay(_ isConnected: Bool) {
+        if isConnected {
+            networkErrorView.hide()
+            view.sendSubviewToBack(networkErrorView)
+        } else {
+            networkErrorView.show()
+            view.bringSubviewToFront(networkErrorView)
+        }
+    }
+
+    private func showErrorView() {
+        view.bringSubviewToFront(errorView)
+        errorView.show()
+    }
+
+    private func hideErrorView() {
+        view.sendSubviewToBack(errorView)
+        errorView.hide()
     }
 }
 
@@ -102,8 +143,13 @@ private extension PeopleViewController {
             headerSearchBar,
             menuView,
             sliderView,
-            emptyStateView
+            emptyStateView,
+            networkErrorView,
+            errorView
         ])
+
+        view.sendSubviewToBack(networkErrorView)
+        view.sendSubviewToBack(errorView)
     }
 
     func setupLayout() {
@@ -142,7 +188,17 @@ private extension PeopleViewController {
                 constant: Spec.emptyStateHorizontalOffset),
             emptyStateView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -Spec.emptyStateHorizontalOffset)
+                constant: -Spec.emptyStateHorizontalOffset),
+
+            networkErrorView.topAnchor.constraint(equalTo: view.topAnchor),
+            networkErrorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            networkErrorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            networkErrorView.bottomAnchor.constraint(equalTo: headerSearchBar.bottomAnchor),
+
+            errorView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
     }
