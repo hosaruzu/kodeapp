@@ -201,7 +201,6 @@ final class PeopleViewViewModel {
 
     private func onNetworkConnectionChange() {
         networkMonitor.onConnectionStatusChange = { isConnected in
-            print(isConnected)
             self.onNetworkStateChange?(isConnected)
         }
     }
