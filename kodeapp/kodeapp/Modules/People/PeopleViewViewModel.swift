@@ -15,6 +15,7 @@ final class PeopleViewViewModel {
     var onFilterStateChange: ((Filters) -> Void)?
     var onSearchStateChange: ((Bool) -> Void)?
     var onNetworkStateChange: ((Bool) -> Void)?
+    var onErrorEvent: (() -> Void)?
 
     // MARK: - Data
 
@@ -80,8 +81,8 @@ final class PeopleViewViewModel {
         showFilterModalScreen(with: self)
     }
 
-    func onErrorEvent() {
-        // show toast?
+    func onErrorButtonTap() {
+        fetchPeople()
     }
 
     // MARK: - Table view data source
@@ -189,9 +190,10 @@ final class PeopleViewViewModel {
             people = fetched.items
             defaultFilteredPeople = people
         } catch NetworkError.noInternetConnection {
-            print("Error: internet")
+            onNetworkStateChange?(false)
+            onErrorEvent?()
         } catch {
-            print("other errors")
+            onErrorEvent?()
         }
     }
 

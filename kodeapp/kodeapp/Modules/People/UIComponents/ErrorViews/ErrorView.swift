@@ -41,7 +41,7 @@ final class ErrorView: UIView {
             string: "Try again",
             attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .semibold)])
         button.setAttributedTitle(text, for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.accent, for: .normal)
         return button
     }()
 
@@ -51,6 +51,8 @@ final class ErrorView: UIView {
         super.init(frame: frame)
         setupVStack()
         setupButtonAction()
+        hide()
+        backgroundColor = .systemBackground
     }
 
     required init?(coder: NSCoder) {
@@ -59,7 +61,20 @@ final class ErrorView: UIView {
 
     // MARK: - Public
 
+    func show() {
+        UIView.animate(withDuration: 0.3) {
+            self.isHidden = false
+            self.alpha = 1
+        }
 
+    }
+
+    func hide() {
+        UIView.animate(withDuration: 0.3) {
+            self.isHidden = true
+            self.alpha = 0
+        }
+    }
 }
 
 // MARK: - Setup layout
@@ -78,10 +93,8 @@ private extension ErrorView {
             errorImageView.widthAnchor.constraint(equalToConstant: Spec.imageViewWidth),
             errorImageView.heightAnchor.constraint(equalToConstant: Spec.imageViewHeight),
 
-            vStack.topAnchor.constraint(equalTo: topAnchor),
-            vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+            vStack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            vStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 }
