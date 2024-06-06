@@ -70,7 +70,7 @@ final class PeopleViewViewModel {
 
     func onRefresh() {
         fetchPeople()
-        selectedFilterState = .standart
+//        selectedFilterState = .ascending
     }
 
     func onCellTap(with person: Person) {
@@ -188,7 +188,8 @@ final class PeopleViewViewModel {
             try? await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
             let fetched = try await networkService.getPeopleList()
             people = fetched.items
-            defaultFilteredPeople = people
+            defaultFilteredPeople = fetched.items
+            filterPeople(by: selectedFilterState)
         } catch NetworkError.noInternetConnection {
             onNetworkStateChange?(false)
             onErrorEvent?()
