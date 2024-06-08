@@ -13,7 +13,6 @@ final class PeopleViewViewModel {
 
     var onLoad: (() -> Void)?
     var onFilterStateChange: ((Filters) -> Void)?
-    var onSearchStateChange: ((Bool) -> Void)?
     var onOnConnectionStatusChange: ((Bool) -> Void)?
     var onErrorEvent: (() -> Void)?
 
@@ -118,11 +117,11 @@ final class PeopleViewViewModel {
         department: Departments,
         inSearchMode: Bool = false
     ) -> PersonTableViewCellViewModel? {
-        if         department == .all {
+        if department == .all {
             let person =  inSearchMode ? peopleFiltered[indexPath.row] : people[indexPath.row]
             return .init(person: person)
         } else {
-            if let person = peopleByDepartment[        department.rawValue]?[indexPath.row] {
+            if let person = peopleByDepartment[department.rawValue]?[indexPath.row] {
                 return .init(person: person)
             }
         }
@@ -157,7 +156,6 @@ final class PeopleViewViewModel {
         inSearchMode = !searchText.isEmpty
         peopleFiltered = people
         guard inSearchMode else {
-            onSearchStateChange?(inSearchMode)
             return
         }
         let searchText = searchText.lowercased()
@@ -166,7 +164,17 @@ final class PeopleViewViewModel {
             || $0.firstName.lowercased().contains(searchText)
             || $0.userTag.lowercased().contains(searchText)
         }
-        onSearchStateChange?(inSearchMode && peopleFiltered.isEmpty)
+    }
+
+    func categorizedPeopleIsEmpty(_ department: Departments) -> Bool {
+        if department == .all {
+            return inSearchMode && peopleFiltered.isEmpty
+        } else {
+            if let filteredPeople = peopleByDepartment[department.rawValue] {
+               return inSearchMode && filteredPeople.isEmpty
+            }
+        }
+        return true
     }
 
     // MARK: - Filter
