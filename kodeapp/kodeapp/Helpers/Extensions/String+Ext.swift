@@ -15,7 +15,7 @@ extension String {
         let dateFormatterInput = DateFormatter()
         dateFormatterInput.dateFormat = "yyyy-MM-dd"
         let dateFormatterOutput = DateFormatter()
-        dateFormatterOutput.dateFormat = "dd MMMM YYYY"
+        dateFormatterOutput.dateFormat = "d MMM yyyy"
         if let date = dateFormatterInput.date(from: inputDate) {
             return dateFormatterOutput.string(from: date)
         } else {
