@@ -9,7 +9,7 @@ import Foundation
 
 enum PeopleEndpoint {
     case people
-    case avatar(id: String, size: AppConstants.ImageSize)
+    case avatar(id: String, size: ImageSize)
 }
 
 extension PeopleEndpoint: Endpoint {

@@ -34,8 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func configureNavigationBarAppearance() {
         UINavigationBar.appearance().tintColor = .label
-        UINavigationBar.appearance().backIndicatorImage = UIImage(resource: .backIcon)
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(resource: .backIcon)
+        UINavigationBar.appearance().backIndicatorImage = AppConstants.Images.back
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = AppConstants.Images.back
         UIBarButtonItem.appearance()
             .setBackButtonTitlePositionAdjustment(
                 UIOffset(horizontal: -1000, vertical: 0),

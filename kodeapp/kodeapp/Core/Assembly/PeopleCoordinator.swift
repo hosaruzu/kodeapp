@@ -5,7 +5,6 @@
 //  Created by Artem Tebenkov on 19.03.2024.
 //
 
-import Foundation
 import UIKit
 
 final class PeopleCoordinator: BaseCoordinator {
@@ -53,7 +52,7 @@ final class PeopleCoordinator: BaseCoordinator {
     }
 
     func presentFilterScreen(with viewModel: PeopleViewViewModel) {
-        let filterVC = UINavigationController(rootViewController: FilterViewController(viewModel: viewModel))
+        let filterVC =  screenFactory.makePeopleFilterModalScreen(with: viewModel, coordinator: self)
         router.present(filterVC, animated: true)
     }
 }

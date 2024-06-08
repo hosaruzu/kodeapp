@@ -7,7 +7,15 @@
 
 import UIKit
 
+// MARK: - AppFactory
+
+protocol AppFactory {
+    func makeKeyWindowWithCoordinator() -> (UIWindow, Coordinator)
+}
+
 final class AppAssembly {
+
+    // MARK: - App Dependencies
 
     fileprivate let screenFactory: ScreenFactoryImpl
     fileprivate let coordinatorFactory: CoordinatorFactoryImpl
@@ -21,14 +29,13 @@ final class AppAssembly {
     fileprivate let networkService: PeopleNetworkServiceImpl
     fileprivate let networkMonitor: NetworkMonitorImpl
 
-    init() {
-        screenFactory = ScreenFactoryImpl()
-        coordinatorFactory = CoordinatorFactoryImpl(screenFactory: screenFactory)
+    // MARK: - Init
 
+    init() {
         urlSession = .shared
         urlCache = .shared
-        urlCache.memoryCapacity = 10_000_000 // ~10 MB memory space
-        urlCache.diskCapacity = 1_000_000_000 // ~1GB disk cache space
+        urlCache.memoryCapacity = 10_000_000
+        urlCache.diskCapacity = 1_000_000_000
         userDefaults = .standard
         decoder = NetworkDecoderImpl()
         request = NetworkRequstsImpl()
@@ -36,25 +43,20 @@ final class AppAssembly {
         networkCacheService = NetworkCacheServiceImpl(userDefaults: userDefaults, urlCache: urlCache)
         networkClient = NetworkClientImpl(
             urlSession: urlSession,
-            cacheService: networkCacheService
-        )
+            cacheService: networkCacheService)
         networkService = PeopleNetworkServiceImpl(
             networkClient: networkClient,
             decoder: decoder,
-            request: request
-        )
-
+            request: request)
+        screenFactory = ScreenFactoryImpl()
+        coordinatorFactory = CoordinatorFactoryImpl(screenFactory: screenFactory)
         screenFactory.appAssembly = self
     }
 }
 
-protocol AppFactory {
-    // Next: add cordinator
-    func makeKeyWindowWithCoordinator() -> (UIWindow, Coordinator)
-}
+// MARK: - AppAssembly + AppFactory
 
 extension AppAssembly: AppFactory {
-
     func makeKeyWindowWithCoordinator() -> (UIWindow, Coordinator) {
         let window = UIWindow()
         let rootVC = UINavigationController()
@@ -65,10 +67,17 @@ extension AppAssembly: AppFactory {
     }
 }
 
-protocol ScreenFactory {
+// MARK: - Screen factory
 
+protocol ScreenFactory {
     func makePeopleScreen(coordinator: PeopleCoordinator) -> PeopleViewController
     func makeProfileScreen(with person: Person, coordinator: PeopleCoordinator) -> ProfileViewController
+
+    func makePeopleFilterModalScreen(
+        with viewModel: PeopleViewViewModel,
+        coordinator: PeopleCoordinator
+    ) -> UINavigationController
+
     func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController
 }
 
@@ -95,6 +104,14 @@ final class ScreenFactoryImpl: ScreenFactory {
         return viewController
     }
 
+    func makePeopleFilterModalScreen(
+        with viewModel: PeopleViewViewModel,
+        coordinator: PeopleCoordinator
+    ) -> UINavigationController {
+        let filterVC = UINavigationController(rootViewController: PeopleFilterViewController(viewModel: viewModel))
+        return filterVC
+    }
+
     func makeCallPhoneAlert(with phoneNumber: String) -> UIViewController {
         let application = UIApplication.shared
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -115,14 +132,15 @@ final class ScreenFactoryImpl: ScreenFactory {
     }
 
     @MainActor
-    func makeFilterScreen(with viewModel: PeopleViewViewModel) -> FilterViewController {
-        let filterViewController = FilterViewController(viewModel: viewModel)
+    func makeFilterScreen(with viewModel: PeopleViewViewModel) -> PeopleFilterViewController {
+        let filterViewController = PeopleFilterViewController(viewModel: viewModel)
         return filterViewController
     }
 }
 
-protocol CoordinatorFactory {
+// MARK: - Coordinator factory
 
+protocol CoordinatorFactory {
     func makeAppCoordinator(router: Router) -> AppCoordinator
     func makePeopleCoordinator(router: Router) -> PeopleCoordinator
 }

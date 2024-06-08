@@ -8,7 +8,6 @@
 import Foundation
 
 protocol NetworkCacheService {
-
     func cacheData(from urlRequest: URLRequest, cachedURLResponse: CachedURLResponse)
     func retrieveCachedData(for urlRequest: URLRequest) -> Data?
 }

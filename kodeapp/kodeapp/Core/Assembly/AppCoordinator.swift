@@ -30,7 +30,7 @@ final class AppCoordinator: BaseCoordinator {
         runPeopleFlow()
     }
 
-    // MARK: - Flows
+    // MARK: - Flow
 
     private func runPeopleFlow() {
         let coordinator = coordinatorFactory.makePeopleCoordinator(router: router)

@@ -8,14 +8,17 @@
 import Foundation
 
 protocol NetworkClient: AnyObject {
-
     func send(_ request: URLRequest) async throws -> Data
 }
 
 final class NetworkClientImpl: NetworkClient {
 
+    // MARK: - Dependencies
+
     private let urlSession: URLSession
     private let cacheService: NetworkCacheService
+
+    // MARK: - Init
 
     init(
         urlSession: URLSession,
@@ -24,6 +27,8 @@ final class NetworkClientImpl: NetworkClient {
         self.urlSession = urlSession
         self.cacheService = cacheService
     }
+
+    // MARK: - Send request
 
     func send(_ request: URLRequest) async throws -> Data {
         if let cachedData = cacheService.retrieveCachedData(for: request) {

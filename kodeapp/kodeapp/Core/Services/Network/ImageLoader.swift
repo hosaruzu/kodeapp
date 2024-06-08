@@ -19,7 +19,9 @@ final class ImageLoader {
     private var cache = NSCache<NSString, NSData>()
     private let networkRequest = NetworkRequstsImpl()
 
-    func downloadImage(_ id: String, size: AppConstants.ImageSize) async throws -> Data {
+    // MARK: - Get image data
+
+    func downloadImage(_ id: String, size: ImageSize) async throws -> Data {
         let request = try networkRequest.build(endpoint: PeopleEndpoint.avatar(id: id, size: size))
         return try await downloadImage(request)
     }

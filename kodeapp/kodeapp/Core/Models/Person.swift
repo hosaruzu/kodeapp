@@ -5,8 +5,6 @@
 //  Created by Artem Tebenkov on 25.03.2024.
 //
 
-import Foundation
-
 struct PeopleResponse: Decodable {
     let items: [Person]
 }
