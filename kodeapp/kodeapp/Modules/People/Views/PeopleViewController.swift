@@ -18,7 +18,7 @@ final class PeopleViewController: UIViewController {
     private let headerSearchBar = SearchBar()
     private let menuView = MenuView()
     private let sliderView = SliderView()
-    private let emptyStateView = EmptyStateView()
+//    private let emptyStateView = EmptyStateView()
     private let networkErrorView = NetworkErrorView()
     private let errorView = ErrorView()
 
@@ -76,10 +76,6 @@ final class PeopleViewController: UIViewController {
 
         sliderView.onCellTap = { [weak self] person in
             self?.viewModel.onCellTap(with: person)
-        }
-
-        viewModel.onSearchStateChange = { [weak self] state in
-            state ? self?.emptyStateView.show() : self?.emptyStateView.hide()
         }
 
         viewModel.onErrorEvent = { [weak self] in
@@ -146,7 +142,6 @@ private extension PeopleViewController {
             headerSearchBar,
             menuView,
             sliderView,
-            emptyStateView,
             networkErrorView,
             errorView
         ])
@@ -176,16 +171,6 @@ private extension PeopleViewController {
             sliderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             sliderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             sliderView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            emptyStateView.topAnchor.constraint(
-                equalTo: menuView.bottomAnchor,
-                constant: Spec.EmptyStateView.bottom),
-            emptyStateView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Spec.EmptyStateView.horizontal),
-            emptyStateView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -Spec.EmptyStateView.horizontal),
 
             networkErrorView.topAnchor.constraint(equalTo: view.topAnchor),
             networkErrorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -252,10 +237,5 @@ private enum Spec {
     enum MenuView {
         static let top: CGFloat = 6
         static let height: CGFloat = 44
-    }
-
-    enum EmptyStateView {
-        static let bottom: CGFloat = 80
-        static let horizontal: CGFloat = 16
     }
 }

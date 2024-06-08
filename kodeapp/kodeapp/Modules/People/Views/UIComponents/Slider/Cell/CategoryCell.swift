@@ -26,6 +26,7 @@ final class CategoryCell: UICollectionViewCell {
 
     private let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
+    private let emptyStateView = EmptyStateView()
 
     // MARK: - View model
 
@@ -35,11 +36,24 @@ final class CategoryCell: UICollectionViewCell {
                viewModel.isLoaded {
                 isLoading = false
                 refreshControl.endRefreshing()
+                tableView.bounces = !viewModel.inSearchMode
             }
         }
     }
 
-    private var category: Departments = .all
+    private var category: Departments = .all {
+        didSet {
+            if let viewModel {
+                if viewModel.categorizedPeopleIsEmpty(category) {
+                    emptyStateView.show()
+                    tableView.isHidden = true
+                } else {
+                    emptyStateView.hide()
+                    tableView.isHidden = false
+                }
+            }
+        }
+    }
 
     // MARK: - Init
 
@@ -83,7 +97,7 @@ private extension CategoryCell {
 private extension CategoryCell {
 
     func setupSubviews() {
-        contentView.addSubviews([tableView])
+        contentView.addSubviews([tableView, emptyStateView])
     }
 
     func setupLayout() {
@@ -91,7 +105,10 @@ private extension CategoryCell {
             tableView.topAnchor.constraint(equalTo: contentView.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            emptyStateView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            emptyStateView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Spec.EmptyStateView.top)
         ])
     }
 }
@@ -99,7 +116,6 @@ private extension CategoryCell {
 // MARK: - Setup refresh control
 
 private extension CategoryCell {
-
     func setupRefreshControl() {
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
@@ -107,9 +123,13 @@ private extension CategoryCell {
 
     @objc
     func onRefresh(_ sender: UIRefreshControl) {
-        isLoading = true
-        onRefresh?()
+        guard let viewModel else { return }
+        if !viewModel.inSearchMode {
+            isLoading = true
+            onRefresh?()
+        }
     }
+
 }
 
 // MARK: - UITableViewDataSource
@@ -172,5 +192,9 @@ private enum Spec {
     enum Cell {
         static let height: CGFloat = 84
         static let amount: Int = 9
+    }
+
+    enum EmptyStateView {
+        static let top: CGFloat = 80
     }
 }
