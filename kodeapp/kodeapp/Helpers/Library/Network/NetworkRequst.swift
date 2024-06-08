@@ -8,7 +8,6 @@
 import Foundation
 
 protocol NetworkRequst: AnyObject {
-
     func build(endpoint: Endpoint) throws -> URLRequest
 }
 

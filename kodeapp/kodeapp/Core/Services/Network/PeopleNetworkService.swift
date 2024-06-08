@@ -8,7 +8,6 @@
 import Foundation
 
 protocol PeopleNetworkService {
-
     func getPeopleList() async throws -> PeopleResponse
 }
 

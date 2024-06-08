@@ -20,28 +20,36 @@ enum AppConstants {
         static let textTertiary = UIColor.tertiaryLabel
     }
 
-    enum ImageSize: String {
-        case small = "60x60"
-        case big = "120x120"
+    enum Fonts {
+        static let title = UIFont.systemFont(ofSize: 16, weight: .medium)
+        static let titleLarge: UIFont = .systemFont(ofSize: 24, weight: .bold)
+        static let titleRegular = UIFont.systemFont(ofSize: 16, weight: .regular)
+
+        static let subtitle: UIFont = .systemFont(ofSize: 17, weight: .regular)
+        static let subtitleSemibold: UIFont = .systemFont(ofSize: 17, weight: .semibold)
+
+        static let body: UIFont = .systemFont(ofSize: 13, weight: .regular)
+        static let bodyLarge: UIFont = .systemFont(ofSize: 14, weight: .medium)
+
+        static let caption: UIFont = .systemFont(ofSize: 15, weight: .medium)
     }
 
     enum Images {
-        static let filterNormal = UIImage(resource: .filterIcon)
-            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+        static let back = UIImage(resource: .backIcon)
+        static let favorite = UIImage(resource: .favoriteIcon)
+        static let phone = UIImage(resource: .phoneIcon)
 
-        static let filterCheckedAscending = UIImage(resource: .filterIconAsc)
-            .withTintColor(.accent, renderingMode: .alwaysOriginal)
+        static let emptyState = UIImage(resource: .magnyfyingGlass)
 
-        static let filterCheckedDescending = UIImage(resource: .filterIcon)
-            .withTintColor(.accent, renderingMode: .alwaysOriginal)
+        static let radio = UIImage(resource: .radioUnchecked)
+        static let radioChecked = UIImage(resource: .radioChecked)
 
-        static let searchNormal = UIImage(resource: .searchIcon)
-            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+        static let filter = UIImage(resource: .filterIcon).withTintColor(.tertiaryLabel)
+        static let filterCheckedAscending = UIImage(resource: .filterIconAsc).withTintColor(AppConstants.Color.accent)
+        static let filterCheckedDescending = UIImage(resource: .filterIcon).withTintColor(AppConstants.Color.accent)
 
-        static let searchChecked = UIImage(resource: .searchIcon)
-            .withTintColor(.label, renderingMode: .alwaysOriginal)
-
-        static let clearTextField = UIImage(resource: .clearIcon)
-            .withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+        static let search = UIImage(resource: .searchIcon).withTintColor(AppConstants.Color.textTertiary)
+        static let searchChecked = UIImage(resource: .searchIcon).withTintColor(AppConstants.Color.textPrimary)
+        static let clearTextField = UIImage(resource: .clearIcon).withTintColor(AppConstants.Color.textTertiary)
     }
 }
